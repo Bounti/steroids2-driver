@@ -50,7 +50,6 @@ pair<uint8_t *, uint64_t> crafter::craft(COMMAND cmd, uint32_t addr_size,
     break;
   case c_read:
     header[0] = 0x20;
-    m_assert(payload.size() == 4);
     break;
   case c_reset:
     header[0] = 0x30;

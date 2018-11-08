@@ -18,15 +18,15 @@ int main(int argc, char *argv[]) {
   uint8_t reception[16] = {0};
   std::string payload((char *)data_dwords, 16);
 
-  auto crafted_packet = crafter::craft(c_reset, 0, string());
-  io->send(crafted_packet.first, crafted_packet.second);
+  //auto crafted_packet = crafter::craft(c_reset, 0, string());
+  //io->send(crafted_packet.first, crafted_packet.second);
 
-  crafted_packet = crafter::craft(c_scan, 0x4, payload);
+  auto crafted_packet = crafter::craft(c_scan, 0x4, payload);
   io->send(crafted_packet.first, crafted_packet.second);
   io->receive(reception, 16);
 
-  crafted_packet = crafter::craft(c_reset, 0, string());
-  io->send(crafted_packet.first, crafted_packet.second);
+  //crafted_packet = crafter::craft(c_reset, 0, string());
+  //io->send(crafted_packet.first, crafted_packet.second);
 
   // for (int i = 0; i < 10; i++) {
   //   cout << termcolor::blue << "wait for next cmd " << i << endl;

@@ -237,6 +237,8 @@ uint32_t device::io(uint8_t endpoint, uint8_t *buffer, uint32_t size) {
 
 void device::send(uint8_t *data, uint32_t size) {
 
+  size = io(entrypoint_download, data, size);
+
   std::stringstream info;
 
   info << "0x" << std::hex << std::setfill('0');
@@ -245,8 +247,6 @@ void device::send(uint8_t *data, uint32_t size) {
     info << " ";
   }
   cout << termcolor::green << "JTAG > " << info.str() << endl;
-
-  size = io(entrypoint_download, data, size);
 }
 
 void device::receive(uint8_t *data, uint32_t size) {
@@ -255,7 +255,7 @@ void device::receive(uint8_t *data, uint32_t size) {
   uint32_t received = 0;
 
   do {
-    received += io(entrypoint_upload, data, size - received);
+    received += io(entrypoint_upload, data+received, size - received);
     cout << termcolor::white << "received :" << received << endl;
   } while (received < size);
 
