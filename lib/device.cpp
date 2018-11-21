@@ -256,7 +256,7 @@ void device::receive(uint8_t *data, uint32_t size) {
 
   do {
     received += io(entrypoint_upload, data+received, size - received);
-    cout << termcolor::white << "received :" << received << endl;
+    //cout << termcolor::white << "received :" << received << endl;
   } while (received < size);
 
   info << "0x" << std::hex << std::setfill('0');
