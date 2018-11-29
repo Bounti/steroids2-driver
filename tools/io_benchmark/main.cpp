@@ -6,7 +6,7 @@
 using namespace std;
 
 double print_timediff(const char *prefix, const struct timespec &start,
-                    const struct timespec &end) {
+                      const struct timespec &end) {
   double milliseconds =
       (end.tv_nsec - start.tv_nsec) / 1e6 + (end.tv_sec - start.tv_sec) * 1e3;
   printf("%s: %lf milliseconds\n", prefix, milliseconds);
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
   }
 
   double average_time = 0;
-  for (auto i = 0; i< 10000; i++) {
+  for (auto i = 0; i < 10000; i++) {
     average_time += time_dataset[i];
   }
   average_time = average_time / 10000;

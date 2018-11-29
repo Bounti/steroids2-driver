@@ -39,7 +39,7 @@ bool device::initialized = false;
 device::device(uint16_t p_vid, uint16_t p_pid, uint32_t p_interface,
                uint8_t out, uint8_t in) {
 
-  timeout = 2000;
+  timeout = 500;
 
   entrypoint_download = out;
   entrypoint_upload = in;
@@ -192,44 +192,46 @@ uint32_t device::io(uint8_t endpoint, uint8_t *buffer, uint32_t size) {
   int32_t transferred;
   int32_t attempt = 0;
 
-  do {
-    if ((retval = libusb_bulk_transfer(device::handle, endpoint, buffer, size,
-                                       &transferred, timeout)) != 0) {
-      cout << termcolor::red
-           << "USB driver failed : " << libusb_error_name(retval) << endl;
-
-      switch (retval) {
-      case LIBUSB_ERROR_TIMEOUT:
-        cout << termcolor::red << "USB driver failed : timeout error" << endl;
-        break;
-      case LIBUSB_ERROR_PIPE:
-        cout << termcolor::red << "USB driver failed : pipe error" << endl;
-        break;
-      case LIBUSB_ERROR_OVERFLOW:
-        cout << termcolor::red << "USB driver failed : overflow" << endl;
-        break;
-      case LIBUSB_ERROR_NO_DEVICE:
-        cout << termcolor::red << "USB driver failed : no device" << endl;
-        break;
-      default:
-        cout << termcolor::red << "USB driver failed : error code " << retval
-             << endl;
-        break;
-      }
-      sleep(2);
-      attempt++;
-    } else if (size == 0)
-      attempt++;
-    else
-      break;
-  } while (attempt < 6);
-
-  if (attempt >= 5) {
+  // do {
+  if ((retval = libusb_bulk_transfer(device::handle, endpoint, buffer, size,
+                                     &transferred, timeout)) != 0) {
     cout << termcolor::red
-         << "driver failed to communicate with device ... endpoint : " << hex
-         << endpoint << endl;
-    throw std::runtime_error(
-        "driver failed to communicate with device ... endpoint\n");
+         << "USB driver failed : " << libusb_error_name(retval) << endl;
+
+    switch (retval) {
+    case LIBUSB_ERROR_TIMEOUT:
+      cout << termcolor::red << "USB driver failed : timeout error" << endl;
+      break;
+    case LIBUSB_ERROR_PIPE:
+      cout << termcolor::red << "USB driver failed : pipe error" << endl;
+      break;
+    case LIBUSB_ERROR_OVERFLOW:
+      cout << termcolor::red << "USB driver failed : overflow" << endl;
+      break;
+    case LIBUSB_ERROR_NO_DEVICE:
+      cout << termcolor::red << "USB driver failed : no device" << endl;
+      break;
+    default:
+      cout << termcolor::red << "USB driver failed : error code " << retval
+           << endl;
+      break;
+    }
+    // sleep(1);
+    // attempt++;
+    //   } else if (size == 0)
+    //     attempt++;
+    //   else
+    //     break;
+    // } while (attempt < 2);
+
+    // if (attempt >= 1) {
+    // return 0;
+    // cout << termcolor::red
+    //      << "driver failed to communicate with device ... endpoint : " <<
+    //      hex
+    //      << endpoint << endl;
+    // throw std::runtime_error(
+    //     "driver failed to communicate with device ... endpoint\n");
   }
 
   return transferred;
@@ -253,11 +255,18 @@ void device::receive(uint8_t *data, uint32_t size) {
 
   std::stringstream info;
   uint32_t received = 0;
+  int32_t attempt = 0;
+  uint32_t recv_size = 0;
 
   do {
-    received += io(entrypoint_upload, data+received, size - received);
-    //cout << termcolor::white << "received :" << received << endl;
-  } while (received < size);
+    recv_size = io(entrypoint_upload, data + received, size - received);
+    if (recv_size == 0) {
+      attempt++;
+    } else {
+      received += recv_size;
+      cout << termcolor::white << "received :" << received << endl;
+    }
+  } while (received < size && attempt < 1);
 
   info << "0x" << std::hex << std::setfill('0');
   for (unsigned int i = 0; i < size; i++) {
