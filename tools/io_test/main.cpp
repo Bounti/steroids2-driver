@@ -41,18 +41,21 @@ int main(int argc, char *argv[]) {
 
     write(io, address, size, wdata);
 
-    auto data = read(io, address, size);
+    uint8_t* data = read(io, address, size);
 
-    if (memcmp(data, wdata, size) != 0) {
+    if (memcmp(&data[4], wdata, size) != 0) {
+      uint32_t* u32_data = (uint32_t*)&data[4];
+      uint32_t* u32_wdata = (uint32_t*)&wdata[0];
+
       cout << "Test " << i << " failed...";
-      cout << "    Expecting " << std::hex << (uint32_t)*wdata;
-      cout << " but get 0x" << std::hex << (uint32_t)*data;
+      cout << "    Expecting " << std::hex << *u32_wdata;
+      cout << " but get 0x" << std::hex << *u32_data;
       cout << " at 0x" << std::hex << address;
 
       return 0;
     }
 
-    address += 4;
+    //address += 4;
     delete data;
   }
 
