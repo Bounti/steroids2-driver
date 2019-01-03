@@ -24,6 +24,9 @@ public:
   static std::pair<uint8_t *, uint64_t> craft(COMMAND cmd, uint32_t addr_size,
                                               string payload);
 
+  static pair<uint8_t *, uint64_t> craft(COMMAND cmd, uint32_t addr_size,
+                                         uint32_t payload);
+
 protected:
   static void le_copy_to(uint8_t *dst, const char *src, uint32_t size);
 };

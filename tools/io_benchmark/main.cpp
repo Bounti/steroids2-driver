@@ -23,8 +23,8 @@ int main(int argc, char *argv[]) {
       operation_type = argv[1][0];
   }
 
-  device *io = init();
-  reset(io);
+  device *io = target_init();
+  target_reset(io);
 
   uint32_t address = 0x20000000, size = 0x4;
   uint8_t wdata[] = {0xAB, 0xAB, 0xAB, 0xAB};
@@ -50,10 +50,10 @@ int main(int argc, char *argv[]) {
     wdata[3] += i;
 
     if (operation_type == 'R')
-      write(io, address, size, wdata);
+      target_write(io, address, size, wdata);
 
     if (operation_type == 'W') {
-      auto data = read(io, address, size);
+      auto data = target_read(io, address, size);
       delete data;
     }
     // address += 4;
