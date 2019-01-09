@@ -116,9 +116,10 @@ void device::init(void) {
   device_open();
 
   if (!device::handle) {
-    cout << termcolor::red << "driver doesn't find device " << hex << vid << ":"
+    cout << termcolor::red << "Inception debugger driver doesn't find device " << hex << vid << ":"
          << hex << pid << endl;
-    throw std::runtime_error("Avatar driver doesn't find device\n");
+    cout << termcolor::white << "\n";
+    throw std::runtime_error("Inception debugger driver doesn't find device\n");
     return;
   }
 
