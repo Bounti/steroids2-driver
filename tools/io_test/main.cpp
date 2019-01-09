@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
     cout << "Test " << 1 << " failed...\n";
     printf("Expecting 0x%02x%02x%02x%02x \n",wdata[0],wdata[1],wdata[2],wdata[3]);
     printf("But get 0x%02x%02x%02x%02x \n",data[0],data[1],data[2],data[3]);
-    cout << " at 0x" << std::hex << address;
+    printf("At 0x%08x \n", address);
     return 0;
   }
 

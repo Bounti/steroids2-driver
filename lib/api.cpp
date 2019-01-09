@@ -12,10 +12,21 @@
 static bool stopped = true;
 static device *irq_io = NULL;
 static Watcher watcher;
+static bool big_endian = false; // Default to little endian
 
 device *target_init() {
   device *io = new device(0x04B4, 0x00F1, 0);
   io->init();
+
+  // Check indianess
+  // Target device are in little endian
+  // Host computer may be in big endian
+  uint64_t x = 0x1;
+
+  // +----+----+----+----+
+  // |0x00|0x00|0x00|0x01|
+  // +----+----+----+----+
+  big_endian = (((char*)(&x))[0] == 1);
 
   return io;
 }
@@ -76,14 +87,30 @@ void target_reset(device *io) {
 uint8_t *target_read(device *io, uint32_t address, uint32_t size) {
   std::string payload = "";
 
-  uint8_t *data = new uint8_t[size]();
+  // +4 for header
+
+  uint8_t *data = new uint8_t[size+4]();
 
   auto crafted_packet = crafter::craft(c_read, address, payload);
   io->send(crafted_packet.first, crafted_packet.second);
 
-  io->receive(data, size * 2);
+  io->receive(data, size + 4);
 
-  return data;
+  if(big_endian) {
+    uint8_t *res = new uint8_t[size]();
+
+    for (uint32_t i = 4; i < size+4; i += 4) {
+      res[i] = data[i + 3];
+      res[i + 1] = data[i + 2];
+      res[i + 2] = data[i + 1];
+      res[i + 3] = data[i];
+    }
+    delete data;
+
+    return res;
+  } else {
+    return &data[4];
+  }
 }
 
 uint32_t target_read_u32(device *io, uint32_t address) {
@@ -126,6 +153,8 @@ void target_write(device *io, uint32_t address, uint32_t size, uint8_t *data) {
   } else {
     // If its memory alligned then we can do 32bits accesses
     switch (size) {
+    case 0:
+      return;
     // byte
     case 1: {
       uint8_t *prv_mem;
