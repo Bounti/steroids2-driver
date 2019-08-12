@@ -22,7 +22,9 @@ int main(int argc, char *argv[]) {
   uint8_t *reception = new uint8_t[data_dwords_size]();
   std::string payload((char *)data_dwords, data_dwords_size);
 
-  auto crafted_packet = crafter::craft(c_scan, data_dwords_size / 4, payload);
+  crafter* my_crafter = new crafter("./protocol.bin");
+
+  auto crafted_packet = my_crafter->craft(c_scan, data_dwords_size / 4, payload);
   io->send(crafted_packet.first, crafted_packet.second);
 
   printf("%d", data_dwords_size);

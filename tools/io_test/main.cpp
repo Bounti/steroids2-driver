@@ -17,6 +17,8 @@ int main(int argc, char *argv[]) {
   uint8_t array[] = {0xAB, 0xAB, 0xAB, 0xAB};
   uint8_t *wdata = array;
 
+  char* configuration_files = "config.txt";
+
   /* Test 8bits access */
   // Read current memory value (4bytes)
   cout << "Testing 8bits access " << endl;

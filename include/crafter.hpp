@@ -15,20 +15,28 @@
 
 using namespace std;
 
+namespace usb2jtag {
+  class PROTOCOL;
+};
+
 class crafter {
 private:
+
+  usb2jtag::PROTOCOL* protocol;
 public:
-  crafter();
+
+  crafter(std::string config_file);
+
   ~crafter();
 
-  static std::pair<uint8_t *, uint64_t> craft(COMMAND cmd, uint32_t addr_size,
+  std::pair<uint8_t *, uint64_t> craft(COMMAND cmd, uint32_t addr_size,
                                               string payload);
 
-  static pair<uint8_t *, uint64_t> craft(COMMAND cmd, uint32_t addr_size,
+  pair<uint8_t *, uint64_t> craft(COMMAND cmd, uint32_t addr_size,
                                          uint32_t payload);
 
 protected:
-  static void le_copy_to(uint8_t *dst, const char *src, uint32_t size);
+  void le_copy_to(uint8_t *dst, const char *src, uint32_t size);
 };
 
 #endif /* crafter_hpp */
