@@ -15,6 +15,8 @@
 typedef void (*Watcher)(int);
 #endif
 
+void load_protocol();
+
 device *target_init();
 
 void target_init_irq(Watcher watcher);

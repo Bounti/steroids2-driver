@@ -11,7 +11,7 @@ set(CMAKE_INSTALL_PREFIX "/usr/local")
 
 set (CMAKE_CXX_STANDARD 11)
 
-include_directories("include")
+include_directories("include" "./lib")
 
 add_subdirectory(lib)
 add_subdirectory(tools)

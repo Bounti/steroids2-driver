@@ -15,11 +15,14 @@ static Watcher watcher;
 static bool big_endian = false; // Default to little endian
 static crafter* my_crafter;
 
+void load_protocol() {
+
+  my_crafter = new crafter("protocol.bin");
+}
+
 device *target_init() {
   device *io = new device(0x04B4, 0x00F1, 0);
   io->init();
-
-  my_crafter = new crafter("protocol.bin");
 
   // Check indianess
   // Target device are in little endian
@@ -81,7 +84,23 @@ void target_init_irq(Watcher _watcher) {
 void target_irq_stop() { stopped = false; }
 
 void target_reset(device *io) {
-  auto crafted_packet = my_crafter->craft(c_reset, 0, string());
+  auto crafted_packet = my_crafter->craft(c_reset, 0, 0);
+
+//  uint8_t* packet = new uint8_t[32];
+//  unsigned long int* l_pkt = (unsigned long int*)&packet[0];
+//
+//  *l_pkt = 0x00000000F1000000;
+//  
+//  l_pkt = (unsigned long int*)&packet[8];
+//  *l_pkt = 0x0000000000000000;
+//
+//  l_pkt = (unsigned long int*)&packet[16];
+//  *l_pkt = 0x0000000000000000;
+//
+//  l_pkt = (unsigned long int*)&packet[24];
+//  *l_pkt = 0x0000000000000000;
+//
+//  io->send(packet, 8);
   io->send(crafted_packet.first, crafted_packet.second);
 }
 

@@ -29,6 +29,8 @@ public:
 
   ~crafter();
 
+  void print_protocol();
+  
   std::pair<uint8_t *, uint64_t> craft(COMMAND cmd, uint32_t addr_size,
                                               string payload);
 
