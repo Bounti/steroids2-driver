@@ -73,31 +73,6 @@ template<> ::usb2jtag::PROTOCOL* Arena::CreateMaybeMessage<::usb2jtag::PROTOCOL>
 PROTOBUF_NAMESPACE_CLOSE
 namespace usb2jtag {
 
-enum JTAG_COMMAND_JTAGState : int {
-  JTAG_COMMAND_JTAGState_IDLE = 0,
-  JTAG_COMMAND_JTAGState_RESET = 1,
-  JTAG_COMMAND_JTAGState_SHIFT_DR = 2,
-  JTAG_COMMAND_JTAGState_SHIFT_IR = 3
-};
-bool JTAG_COMMAND_JTAGState_IsValid(int value);
-constexpr JTAG_COMMAND_JTAGState JTAG_COMMAND_JTAGState_JTAGState_MIN = JTAG_COMMAND_JTAGState_IDLE;
-constexpr JTAG_COMMAND_JTAGState JTAG_COMMAND_JTAGState_JTAGState_MAX = JTAG_COMMAND_JTAGState_SHIFT_IR;
-constexpr int JTAG_COMMAND_JTAGState_JTAGState_ARRAYSIZE = JTAG_COMMAND_JTAGState_JTAGState_MAX + 1;
-
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* JTAG_COMMAND_JTAGState_descriptor();
-template<typename T>
-inline const std::string& JTAG_COMMAND_JTAGState_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, JTAG_COMMAND_JTAGState>::value ||
-    ::std::is_integral<T>::value,
-    "Incorrect type passed to function JTAG_COMMAND_JTAGState_Name.");
-  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    JTAG_COMMAND_JTAGState_descriptor(), enum_t_value);
-}
-inline bool JTAG_COMMAND_JTAGState_Parse(
-    const std::string& name, JTAG_COMMAND_JTAGState* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<JTAG_COMMAND_JTAGState>(
-    JTAG_COMMAND_JTAGState_descriptor(), name, value);
-}
 enum HL_COMMAND_CMD_TYPE : int {
   HL_COMMAND_CMD_TYPE_READ = 0,
   HL_COMMAND_CMD_TYPE_WRITE = 1,
@@ -206,8 +181,10 @@ class JTAG_COMMAND :
   bool MergePartialFromCodedStream(
       ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
   #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
   ::PROTOBUF_NAMESPACE_ID::uint8* InternalSerializeWithCachedSizesToArray(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+      ::PROTOBUF_NAMESPACE_ID::uint8* target) const final;
   int GetCachedSize() const final { return _cached_size_.Get(); }
 
   private:
@@ -239,40 +216,6 @@ class JTAG_COMMAND :
 
   // nested types ----------------------------------------------------
 
-  typedef JTAG_COMMAND_JTAGState JTAGState;
-  static constexpr JTAGState IDLE =
-    JTAG_COMMAND_JTAGState_IDLE;
-  static constexpr JTAGState RESET =
-    JTAG_COMMAND_JTAGState_RESET;
-  static constexpr JTAGState SHIFT_DR =
-    JTAG_COMMAND_JTAGState_SHIFT_DR;
-  static constexpr JTAGState SHIFT_IR =
-    JTAG_COMMAND_JTAGState_SHIFT_IR;
-  static inline bool JTAGState_IsValid(int value) {
-    return JTAG_COMMAND_JTAGState_IsValid(value);
-  }
-  static constexpr JTAGState JTAGState_MIN =
-    JTAG_COMMAND_JTAGState_JTAGState_MIN;
-  static constexpr JTAGState JTAGState_MAX =
-    JTAG_COMMAND_JTAGState_JTAGState_MAX;
-  static constexpr int JTAGState_ARRAYSIZE =
-    JTAG_COMMAND_JTAGState_JTAGState_ARRAYSIZE;
-  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
-  JTAGState_descriptor() {
-    return JTAG_COMMAND_JTAGState_descriptor();
-  }
-  template<typename T>
-  static inline const std::string& JTAGState_Name(T enum_t_value) {
-    static_assert(::std::is_same<T, JTAGState>::value ||
-      ::std::is_integral<T>::value,
-      "Incorrect type passed to function JTAGState_Name.");
-    return JTAG_COMMAND_JTAGState_Name(enum_t_value);
-  }
-  static inline bool JTAGState_Parse(const std::string& name,
-      JTAGState* value) {
-    return JTAG_COMMAND_JTAGState_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
   enum : int {
@@ -286,96 +229,73 @@ class JTAG_COMMAND :
     kDataFieldNumber = 8,
     kDataIsOtherFieldNumber = 9,
     kDataIsAddressFieldNumber = 10,
+    kWriteBackFieldNumber = 11,
   };
-  // required .usb2jtag.JTAG_COMMAND.JTAGState jtag_start = 1;
+  // required uint32 jtag_start = 1;
   bool has_jtag_start() const;
-  private:
-  bool _internal_has_jtag_start() const;
-  public:
   void clear_jtag_start();
-  ::usb2jtag::JTAG_COMMAND_JTAGState jtag_start() const;
-  void set_jtag_start(::usb2jtag::JTAG_COMMAND_JTAGState value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 jtag_start() const;
+  void set_jtag_start(::PROTOBUF_NAMESPACE_ID::uint32 value);
 
-  // required .usb2jtag.JTAG_COMMAND.JTAGState jtag_end = 2;
+  // required uint32 jtag_end = 2;
   bool has_jtag_end() const;
-  private:
-  bool _internal_has_jtag_end() const;
-  public:
   void clear_jtag_end();
-  ::usb2jtag::JTAG_COMMAND_JTAGState jtag_end() const;
-  void set_jtag_end(::usb2jtag::JTAG_COMMAND_JTAGState value);
+  ::PROTOBUF_NAMESPACE_ID::uint32 jtag_end() const;
+  void set_jtag_end(::PROTOBUF_NAMESPACE_ID::uint32 value);
 
-  // required uint32 bitcount = 3;
+  // required uint32 bitcount = 3 [default = 0];
   bool has_bitcount() const;
-  private:
-  bool _internal_has_bitcount() const;
-  public:
   void clear_bitcount();
   ::PROTOBUF_NAMESPACE_ID::uint32 bitcount() const;
   void set_bitcount(::PROTOBUF_NAMESPACE_ID::uint32 value);
 
-  // required uint32 period = 4;
+  // required uint32 period = 4 [default = 0];
   bool has_period() const;
-  private:
-  bool _internal_has_period() const;
-  public:
   void clear_period();
   ::PROTOBUF_NAMESPACE_ID::uint32 period() const;
   void set_period(::PROTOBUF_NAMESPACE_ID::uint32 value);
 
-  // required uint64 payload = 5;
+  // optional uint64 payload = 5 [default = 0];
   bool has_payload() const;
-  private:
-  bool _internal_has_payload() const;
-  public:
   void clear_payload();
   ::PROTOBUF_NAMESPACE_ID::uint64 payload() const;
   void set_payload(::PROTOBUF_NAMESPACE_ID::uint64 value);
 
-  // required uint32 data_offset = 6;
+  // optional uint32 data_offset = 6 [default = 0];
   bool has_data_offset() const;
-  private:
-  bool _internal_has_data_offset() const;
-  public:
   void clear_data_offset();
   ::PROTOBUF_NAMESPACE_ID::uint32 data_offset() const;
   void set_data_offset(::PROTOBUF_NAMESPACE_ID::uint32 value);
 
-  // required uint32 data_length = 7;
+  // optional uint32 data_length = 7 [default = 0];
   bool has_data_length() const;
-  private:
-  bool _internal_has_data_length() const;
-  public:
   void clear_data_length();
   ::PROTOBUF_NAMESPACE_ID::uint32 data_length() const;
   void set_data_length(::PROTOBUF_NAMESPACE_ID::uint32 value);
 
-  // required uint64 data = 8;
+  // optional uint64 data = 8 [default = 0];
   bool has_data() const;
-  private:
-  bool _internal_has_data() const;
-  public:
   void clear_data();
   ::PROTOBUF_NAMESPACE_ID::uint64 data() const;
   void set_data(::PROTOBUF_NAMESPACE_ID::uint64 value);
 
-  // required bool data_is_other = 9;
+  // optional bool data_is_other = 9 [default = false];
   bool has_data_is_other() const;
-  private:
-  bool _internal_has_data_is_other() const;
-  public:
   void clear_data_is_other();
   bool data_is_other() const;
   void set_data_is_other(bool value);
 
-  // required bool data_is_address = 10;
+  // optional bool data_is_address = 10 [default = false];
   bool has_data_is_address() const;
-  private:
-  bool _internal_has_data_is_address() const;
-  public:
   void clear_data_is_address();
   bool data_is_address() const;
   void set_data_is_address(bool value);
+
+  // optional bool write_back = 11 [default = false];
+  bool has_write_back() const;
+  void clear_write_back();
+  bool write_back() const;
+  void set_write_back(bool value);
 
   // @@protoc_insertion_point(class_scope:usb2jtag.JTAG_COMMAND)
  private:
@@ -387,8 +307,8 @@ class JTAG_COMMAND :
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  int jtag_start_;
-  int jtag_end_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 jtag_start_;
+  ::PROTOBUF_NAMESPACE_ID::uint32 jtag_end_;
   ::PROTOBUF_NAMESPACE_ID::uint32 bitcount_;
   ::PROTOBUF_NAMESPACE_ID::uint32 period_;
   ::PROTOBUF_NAMESPACE_ID::uint64 payload_;
@@ -397,6 +317,7 @@ class JTAG_COMMAND :
   ::PROTOBUF_NAMESPACE_ID::uint64 data_;
   bool data_is_other_;
   bool data_is_address_;
+  bool write_back_;
   friend struct ::TableStruct_jtag_5fcmd_2eproto;
 };
 // -------------------------------------------------------------------
@@ -483,8 +404,10 @@ class HL_COMMAND :
   bool MergePartialFromCodedStream(
       ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
   #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
   ::PROTOBUF_NAMESPACE_ID::uint8* InternalSerializeWithCachedSizesToArray(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+      ::PROTOBUF_NAMESPACE_ID::uint8* target) const final;
   int GetCachedSize() const final { return _cached_size_.Get(); }
 
   private:
@@ -568,18 +491,12 @@ class HL_COMMAND :
 
   // required .usb2jtag.HL_COMMAND.CMD_TYPE type = 1;
   bool has_type() const;
-  private:
-  bool _internal_has_type() const;
-  public:
   void clear_type();
   ::usb2jtag::HL_COMMAND_CMD_TYPE type() const;
   void set_type(::usb2jtag::HL_COMMAND_CMD_TYPE value);
 
   // required uint32 size = 3;
   bool has_size() const;
-  private:
-  bool _internal_has_size() const;
-  public:
   void clear_size();
   ::PROTOBUF_NAMESPACE_ID::uint32 size() const;
   void set_size(::PROTOBUF_NAMESPACE_ID::uint32 value);
@@ -683,8 +600,10 @@ class PROTOCOL :
   bool MergePartialFromCodedStream(
       ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
   #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
   ::PROTOBUF_NAMESPACE_ID::uint8* InternalSerializeWithCachedSizesToArray(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+      ::PROTOBUF_NAMESPACE_ID::uint8* target) const final;
   int GetCachedSize() const final { return _cached_size_.Get(); }
 
   private:
@@ -735,9 +654,6 @@ class PROTOCOL :
 
   // required string target = 1;
   bool has_target() const;
-  private:
-  bool _internal_has_target() const;
-  public:
   void clear_target();
   const std::string& target() const;
   void set_target(const std::string& value);
@@ -747,11 +663,6 @@ class PROTOCOL :
   std::string* mutable_target();
   std::string* release_target();
   void set_allocated_target(std::string* target);
-  private:
-  const std::string& _internal_target() const;
-  void _internal_set_target(const std::string& value);
-  std::string* _internal_mutable_target();
-  public:
 
   // @@protoc_insertion_point(class_scope:usb2jtag.PROTOCOL)
  private:
@@ -775,56 +686,45 @@ class PROTOCOL :
 #endif  // __GNUC__
 // JTAG_COMMAND
 
-// required .usb2jtag.JTAG_COMMAND.JTAGState jtag_start = 1;
-inline bool JTAG_COMMAND::_internal_has_jtag_start() const {
+// required uint32 jtag_start = 1;
+inline bool JTAG_COMMAND::has_jtag_start() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline bool JTAG_COMMAND::has_jtag_start() const {
-  return _internal_has_jtag_start();
-}
 inline void JTAG_COMMAND::clear_jtag_start() {
-  jtag_start_ = 0;
+  jtag_start_ = 0u;
   _has_bits_[0] &= ~0x00000001u;
 }
-inline ::usb2jtag::JTAG_COMMAND_JTAGState JTAG_COMMAND::jtag_start() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 JTAG_COMMAND::jtag_start() const {
   // @@protoc_insertion_point(field_get:usb2jtag.JTAG_COMMAND.jtag_start)
-  return static_cast< ::usb2jtag::JTAG_COMMAND_JTAGState >(jtag_start_);
+  return jtag_start_;
 }
-inline void JTAG_COMMAND::set_jtag_start(::usb2jtag::JTAG_COMMAND_JTAGState value) {
-  assert(::usb2jtag::JTAG_COMMAND_JTAGState_IsValid(value));
+inline void JTAG_COMMAND::set_jtag_start(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _has_bits_[0] |= 0x00000001u;
   jtag_start_ = value;
   // @@protoc_insertion_point(field_set:usb2jtag.JTAG_COMMAND.jtag_start)
 }
 
-// required .usb2jtag.JTAG_COMMAND.JTAGState jtag_end = 2;
-inline bool JTAG_COMMAND::_internal_has_jtag_end() const {
+// required uint32 jtag_end = 2;
+inline bool JTAG_COMMAND::has_jtag_end() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline bool JTAG_COMMAND::has_jtag_end() const {
-  return _internal_has_jtag_end();
-}
 inline void JTAG_COMMAND::clear_jtag_end() {
-  jtag_end_ = 0;
+  jtag_end_ = 0u;
   _has_bits_[0] &= ~0x00000002u;
 }
-inline ::usb2jtag::JTAG_COMMAND_JTAGState JTAG_COMMAND::jtag_end() const {
+inline ::PROTOBUF_NAMESPACE_ID::uint32 JTAG_COMMAND::jtag_end() const {
   // @@protoc_insertion_point(field_get:usb2jtag.JTAG_COMMAND.jtag_end)
-  return static_cast< ::usb2jtag::JTAG_COMMAND_JTAGState >(jtag_end_);
+  return jtag_end_;
 }
-inline void JTAG_COMMAND::set_jtag_end(::usb2jtag::JTAG_COMMAND_JTAGState value) {
-  assert(::usb2jtag::JTAG_COMMAND_JTAGState_IsValid(value));
+inline void JTAG_COMMAND::set_jtag_end(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   _has_bits_[0] |= 0x00000002u;
   jtag_end_ = value;
   // @@protoc_insertion_point(field_set:usb2jtag.JTAG_COMMAND.jtag_end)
 }
 
-// required uint32 bitcount = 3;
-inline bool JTAG_COMMAND::_internal_has_bitcount() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
+// required uint32 bitcount = 3 [default = 0];
 inline bool JTAG_COMMAND::has_bitcount() const {
-  return _internal_has_bitcount();
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void JTAG_COMMAND::clear_bitcount() {
   bitcount_ = 0u;
@@ -840,12 +740,9 @@ inline void JTAG_COMMAND::set_bitcount(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   // @@protoc_insertion_point(field_set:usb2jtag.JTAG_COMMAND.bitcount)
 }
 
-// required uint32 period = 4;
-inline bool JTAG_COMMAND::_internal_has_period() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
+// required uint32 period = 4 [default = 0];
 inline bool JTAG_COMMAND::has_period() const {
-  return _internal_has_period();
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void JTAG_COMMAND::clear_period() {
   period_ = 0u;
@@ -861,12 +758,9 @@ inline void JTAG_COMMAND::set_period(::PROTOBUF_NAMESPACE_ID::uint32 value) {
   // @@protoc_insertion_point(field_set:usb2jtag.JTAG_COMMAND.period)
 }
 
-// required uint64 payload = 5;
-inline bool JTAG_COMMAND::_internal_has_payload() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
+// optional uint64 payload = 5 [default = 0];
 inline bool JTAG_COMMAND::has_payload() const {
-  return _internal_has_payload();
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void JTAG_COMMAND::clear_payload() {
   payload_ = PROTOBUF_ULONGLONG(0);
@@ -882,12 +776,9 @@ inline void JTAG_COMMAND::set_payload(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   // @@protoc_insertion_point(field_set:usb2jtag.JTAG_COMMAND.payload)
 }
 
-// required uint32 data_offset = 6;
-inline bool JTAG_COMMAND::_internal_has_data_offset() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
-}
+// optional uint32 data_offset = 6 [default = 0];
 inline bool JTAG_COMMAND::has_data_offset() const {
-  return _internal_has_data_offset();
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void JTAG_COMMAND::clear_data_offset() {
   data_offset_ = 0u;
@@ -903,12 +794,9 @@ inline void JTAG_COMMAND::set_data_offset(::PROTOBUF_NAMESPACE_ID::uint32 value)
   // @@protoc_insertion_point(field_set:usb2jtag.JTAG_COMMAND.data_offset)
 }
 
-// required uint32 data_length = 7;
-inline bool JTAG_COMMAND::_internal_has_data_length() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
-}
+// optional uint32 data_length = 7 [default = 0];
 inline bool JTAG_COMMAND::has_data_length() const {
-  return _internal_has_data_length();
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void JTAG_COMMAND::clear_data_length() {
   data_length_ = 0u;
@@ -924,12 +812,9 @@ inline void JTAG_COMMAND::set_data_length(::PROTOBUF_NAMESPACE_ID::uint32 value)
   // @@protoc_insertion_point(field_set:usb2jtag.JTAG_COMMAND.data_length)
 }
 
-// required uint64 data = 8;
-inline bool JTAG_COMMAND::_internal_has_data() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
-}
+// optional uint64 data = 8 [default = 0];
 inline bool JTAG_COMMAND::has_data() const {
-  return _internal_has_data();
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void JTAG_COMMAND::clear_data() {
   data_ = PROTOBUF_ULONGLONG(0);
@@ -945,12 +830,9 @@ inline void JTAG_COMMAND::set_data(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   // @@protoc_insertion_point(field_set:usb2jtag.JTAG_COMMAND.data)
 }
 
-// required bool data_is_other = 9;
-inline bool JTAG_COMMAND::_internal_has_data_is_other() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
-}
+// optional bool data_is_other = 9 [default = false];
 inline bool JTAG_COMMAND::has_data_is_other() const {
-  return _internal_has_data_is_other();
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void JTAG_COMMAND::clear_data_is_other() {
   data_is_other_ = false;
@@ -966,12 +848,9 @@ inline void JTAG_COMMAND::set_data_is_other(bool value) {
   // @@protoc_insertion_point(field_set:usb2jtag.JTAG_COMMAND.data_is_other)
 }
 
-// required bool data_is_address = 10;
-inline bool JTAG_COMMAND::_internal_has_data_is_address() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
-}
+// optional bool data_is_address = 10 [default = false];
 inline bool JTAG_COMMAND::has_data_is_address() const {
-  return _internal_has_data_is_address();
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void JTAG_COMMAND::clear_data_is_address() {
   data_is_address_ = false;
@@ -987,16 +866,31 @@ inline void JTAG_COMMAND::set_data_is_address(bool value) {
   // @@protoc_insertion_point(field_set:usb2jtag.JTAG_COMMAND.data_is_address)
 }
 
+// optional bool write_back = 11 [default = false];
+inline bool JTAG_COMMAND::has_write_back() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void JTAG_COMMAND::clear_write_back() {
+  write_back_ = false;
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline bool JTAG_COMMAND::write_back() const {
+  // @@protoc_insertion_point(field_get:usb2jtag.JTAG_COMMAND.write_back)
+  return write_back_;
+}
+inline void JTAG_COMMAND::set_write_back(bool value) {
+  _has_bits_[0] |= 0x00000400u;
+  write_back_ = value;
+  // @@protoc_insertion_point(field_set:usb2jtag.JTAG_COMMAND.write_back)
+}
+
 // -------------------------------------------------------------------
 
 // HL_COMMAND
 
 // required .usb2jtag.HL_COMMAND.CMD_TYPE type = 1;
-inline bool HL_COMMAND::_internal_has_type() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
 inline bool HL_COMMAND::has_type() const {
-  return _internal_has_type();
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
 inline void HL_COMMAND::clear_type() {
   type_ = 0;
@@ -1044,11 +938,8 @@ HL_COMMAND::commands() const {
 }
 
 // required uint32 size = 3;
-inline bool HL_COMMAND::_internal_has_size() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
 inline bool HL_COMMAND::has_size() const {
-  return _internal_has_size();
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void HL_COMMAND::clear_size() {
   size_ = 0u;
@@ -1069,11 +960,8 @@ inline void HL_COMMAND::set_size(::PROTOBUF_NAMESPACE_ID::uint32 value) {
 // PROTOCOL
 
 // required string target = 1;
-inline bool PROTOCOL::_internal_has_target() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
 inline bool PROTOCOL::has_target() const {
-  return _internal_has_target();
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
 inline void PROTOCOL::clear_target() {
   target_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -1081,22 +969,12 @@ inline void PROTOCOL::clear_target() {
 }
 inline const std::string& PROTOCOL::target() const {
   // @@protoc_insertion_point(field_get:usb2jtag.PROTOCOL.target)
-  return _internal_target();
-}
-inline void PROTOCOL::set_target(const std::string& value) {
-  _internal_set_target(value);
-  // @@protoc_insertion_point(field_set:usb2jtag.PROTOCOL.target)
-}
-inline std::string* PROTOCOL::mutable_target() {
-  // @@protoc_insertion_point(field_mutable:usb2jtag.PROTOCOL.target)
-  return _internal_mutable_target();
-}
-inline const std::string& PROTOCOL::_internal_target() const {
   return target_.GetNoArena();
 }
-inline void PROTOCOL::_internal_set_target(const std::string& value) {
+inline void PROTOCOL::set_target(const std::string& value) {
   _has_bits_[0] |= 0x00000001u;
   target_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:usb2jtag.PROTOCOL.target)
 }
 inline void PROTOCOL::set_target(std::string&& value) {
   _has_bits_[0] |= 0x00000001u;
@@ -1116,8 +994,9 @@ inline void PROTOCOL::set_target(const char* value, size_t size) {
       ::std::string(reinterpret_cast<const char*>(value), size));
   // @@protoc_insertion_point(field_set_pointer:usb2jtag.PROTOCOL.target)
 }
-inline std::string* PROTOCOL::_internal_mutable_target() {
+inline std::string* PROTOCOL::mutable_target() {
   _has_bits_[0] |= 0x00000001u;
+  // @@protoc_insertion_point(field_mutable:usb2jtag.PROTOCOL.target)
   return target_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 inline std::string* PROTOCOL::release_target() {
@@ -1182,11 +1061,6 @@ PROTOCOL::commands() const {
 
 PROTOBUF_NAMESPACE_OPEN
 
-template <> struct is_proto_enum< ::usb2jtag::JTAG_COMMAND_JTAGState> : ::std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::usb2jtag::JTAG_COMMAND_JTAGState>() {
-  return ::usb2jtag::JTAG_COMMAND_JTAGState_descriptor();
-}
 template <> struct is_proto_enum< ::usb2jtag::HL_COMMAND_CMD_TYPE> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::usb2jtag::HL_COMMAND_CMD_TYPE>() {

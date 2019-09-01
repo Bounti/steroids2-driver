@@ -16,13 +16,13 @@
 using namespace std;
 
 namespace usb2jtag {
-  class PROTOCOL;
+  class PROTOCOLS;
 };
 
 class crafter {
 private:
 
-  usb2jtag::PROTOCOL* protocol;
+  usb2jtag::PROTOCOLS* protocols;
 public:
 
   crafter(std::string config_file);
@@ -30,9 +30,6 @@ public:
   ~crafter();
 
   void print_protocol();
-  
-  std::pair<uint8_t *, uint64_t> craft(COMMAND cmd, uint32_t addr_size,
-                                              string payload);
 
   pair<uint8_t *, uint64_t> craft(COMMAND cmd, uint32_t addr_size,
                                          uint32_t payload);

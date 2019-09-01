@@ -40,7 +40,7 @@ crafter::crafter(std::string config_file) {
 
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-  protocol = new PROTOCOL();
+  protocols = new PROTOCOLS();
 
   {
     // Read the existing address book.
@@ -105,13 +105,12 @@ pair<uint8_t *, uint64_t> crafter::craft(COMMAND cmd_type, uint32_t addr,
 
         unsigned long int* raw_packet = (unsigned long int*)&packet[k*8];
         unsigned long int be_packet = 0;
-        raw_packet[0] = 0;
 
-        be_packet |= (unsigned long int)(jtag_cmd.jtag_start() & 0xF) << 60;
-        be_packet |= (unsigned long int)(jtag_cmd.jtag_end()   & 0xF)  << 56;
-        be_packet |= (unsigned long int)(jtag_cmd.bitcount()   & 0x3F) << 48;
-        be_packet |= (unsigned long int)(jtag_cmd.period()     & 0x3F) << 42;
-        be_packet |= (unsigned long int)(jtag_cmd.payload()    & 0xFFFFFFFFFFF) << 42;
+        be_packet |= (unsigned long int)(jtag_cmd.jtag_start() & 0xF);
+        be_packet |= (unsigned long int)(jtag_cmd.jtag_end()   & 0xF) << 4;
+        be_packet |= (unsigned long int)(jtag_cmd.bitcount()   & 0x3F) << 8;
+        be_packet |= (unsigned long int)(jtag_cmd.period()     & 0x3F) << 14;
+        be_packet |= (unsigned long int)(jtag_cmd.payload()    & 0xFFFFFFFFFFF) << 20;
         if( jtag_cmd.data_length() != 0 ) {
           unsigned long data;
           if( jtag_cmd.data_is_address() )
@@ -119,8 +118,11 @@ pair<uint8_t *, uint64_t> crafter::craft(COMMAND cmd_type, uint32_t addr,
           if( jtag_cmd.data_is_other() )
             data = payload;
 
-          be_packet |= (unsigned long int)(data << jtag_cmd.data_offset()) << 42;
+          be_packet |= (unsigned long int)(data << jtag_cmd.data_offset()) << 20;
         }
+
+       if( jtag_cmd.has_write_back() && jtag_cmd.write_back() )
+         be_packet |= 0x8000000000000000;
 
          *raw_packet = be_packet;
          //*raw_packet = 0x1100000000000000;
@@ -141,13 +143,13 @@ pair<uint8_t *, uint64_t> crafter::craft(COMMAND cmd_type, uint32_t addr,
           //raw_packet[0] = ((raw_packet[0] & 0xFFFFFFFF) << 32) | ((raw_packet[0] >> 32)& 0xFFFFFFFF);  
       }
 
-      printf("\n\n");
-      for(auto l=0; l<cmd.size()/8; l++) {
-        if( l != 0 && l % 4 == 0 )
-          printf("\n");
-        printf("%02x", packet[l]);
-      }
-      printf("\n");
+      //printf("\n\n");
+      //for(auto l=0; l<cmd.size()/8; l++) {
+      //  if( l != 0 && l % 4 == 0 )
+      //    printf("\n");
+      //  printf("%02x", packet[l]);
+      //}
+      //printf("\n");
 
       return make_pair(packet, cmd.size()/8);
     }
@@ -171,10 +173,11 @@ pair<uint8_t *, uint64_t> crafter::craft(COMMAND cmd_type, uint32_t addr,
 
     // For each 4byte chunk
     for(auto k=0; k<payload.size(); k+=4) {
-      for(auto i=k; i<payload.size(); i++) {
-        // little endian
-        ui32_payload = (payload[i] << (24 - (i*8)));
-      }
+      ///for(auto i=k; i<payload.size(); i++) {
+      //  // little endian
+      //  ui32_payload = (payload[i] << (24 - (i*8)));
+      //}
+      ui32_payload = 0xAAAAAAAA;
       auto packet_chunk = craft(cmd_type, addr, ui32_payload);
 
       size += packet_chunk.second;

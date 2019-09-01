@@ -19,44 +19,44 @@ int main(int argc, char *argv[]) {
   int32_t max_cycles = 100000;
 
   if (argc == 2) {
-    max_cycles = (uint32_t)argv[1][0];
+    max_cycles = atoi(argv[1]);
   }
 
   device *io = target_init();
 
+  //uint8_t *buffer = new uint8_t[8]();
+  //io->receive(buffer, 8);
+
+  load_protocol();
+  
   target_reset(io);
 
-  uint32_t address = 0x20000000, size = 0x4;
+  uint32_t address = 0x2000C000, size = 0x4;
 
-  uint8_t wdata[] = {0xAB, 0xAB, 0xAB, 0xAB};
+  uint32_t wdata = {0xBAB00001};
 
   struct timespec start, end;
   clock_gettime(CLOCK_MONOTONIC, &start);
 
   for (auto i = 0; i < max_cycles; i++) {
-    wdata[0] += i;
-    wdata[1] += i;
-    wdata[2] += i;
-    wdata[3] += i;
+    wdata += i;
 
-    target_write(io, address, size, wdata);
+    target_write(io, address, wdata);
 
-    uint8_t *data = target_read(io, address, size);
+    uint32_t data = target_read_u32(io, address);
 
-    if (memcmp(&data[4], wdata, size) != 0) {
-      uint32_t *u32_data = (uint32_t *)&data[4];
-      uint32_t *u32_wdata = (uint32_t *)&wdata[0];
+    if (memcmp((const void*)&data, (const void*)&wdata, 4) != 0) {
 
       cout << "Test " << i << " failed...";
-      cout << "    Expecting " << std::hex << *u32_wdata;
-      cout << " but get 0x" << std::hex << *u32_data;
+      cout << "    Expecting " << std::hex << wdata;
+      cout << " but get 0x" << std::hex << data;
       cout << " at 0x" << std::hex << address;
+      cout << endl;
 
       return 0;
     }
 
     // address += 4;
-    delete data;
   }
 
   clock_gettime(CLOCK_MONOTONIC, &end);

@@ -242,14 +242,14 @@ void device::send(uint8_t *data, uint32_t size) {
 
   size = io(entrypoint_download, data, size);
 
-  std::stringstream info;
+  //std::stringstream info;
 
-  info << "0x" << std::hex << std::setfill('0');
-  for (unsigned int i = 0; i < size; i++) {
-    info << std::setw(2) << static_cast<unsigned>(data[i]);
-    info << " ";
-  }
-  cout << termcolor::green << "JTAG > " << info.str() << endl;
+  //info << "0x" << std::hex << std::setfill('0');
+  //for (unsigned int i = 0; i < size; i++) {
+  //  info << std::setw(2) << static_cast<unsigned>(data[i]);
+  //  info << " ";
+  //}
+  //cout << termcolor::green << "JTAG > " << info.str() << endl;
 }
 
 void device::receive(uint8_t *data, uint32_t size) {
@@ -265,14 +265,14 @@ void device::receive(uint8_t *data, uint32_t size) {
       attempt++;
     } else {
       received += recv_size;
-      cout << termcolor::white << "received :" << received << endl;
+      //cout << termcolor::white << "received :" << received << endl;
     }
   } while (received < size && attempt < 1);
 
-  info << "0x" << std::hex << std::setfill('0');
-  for (unsigned int i = 0; i < size; i++) {
-    info << std::setw(2) << static_cast<unsigned>(data[i]);
-    info << " ";
-  }
-  cout << termcolor::green << "JTAG < " << info.str() << endl;
+  //info << "0x" << std::hex << std::setfill('0');
+  //for (unsigned int i = (received-1); i>=0; --i) {
+  //  info << std::setw(2) << static_cast<unsigned>(data[i]);
+  //  info << " ";
+  //}
+  //cout << termcolor::green << "JTAG < " << info.str() << endl;
 }

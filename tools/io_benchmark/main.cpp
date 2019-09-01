@@ -24,10 +24,13 @@ int main(int argc, char *argv[]) {
   }
 
   device *io = target_init();
+
+  load_protocol();
+
   target_reset(io);
 
   uint32_t address = 0x20000000, size = 0x4;
-  uint8_t wdata[] = {0xAB, 0xAB, 0xAB, 0xAB};
+  uint32_t wdata = 0xAAAAAAAA;
 
   cout << "Author  : Corteggiani Nassim" << endl;
   cout << "Contact : nassim.corteggiani@maximintegrated.com" << endl;
@@ -38,21 +41,16 @@ int main(int argc, char *argv[]) {
           "or 'W'"
        << endl;
 
-  double time_dataset[10000];
+  double time_dataset[100000];
 
-  for (auto i = 0; i < 10000; i++) {
+  for (auto i = 0; i < 100000; i++) {
     struct timespec start, end;
     clock_gettime(CLOCK_MONOTONIC, &start);
 
-    wdata[0] += i;
-    wdata[1] += i;
-    wdata[2] += i;
-    wdata[3] += i;
+    if (operation_type == 'W')
+      target_write(io, address, wdata);
 
-    if (operation_type == 'R')
-      target_write(io, address, size, wdata);
-
-    if (operation_type == 'W') {
+    if (operation_type == 'R') {
       auto data = target_read(io, address, size);
       delete data;
     }
@@ -61,16 +59,18 @@ int main(int argc, char *argv[]) {
     clock_gettime(CLOCK_MONOTONIC, &end);
 
     time_dataset[i] = print_timediff("clock_gettime", start, end);
+    
+    wdata += i;
   }
 
   double average_time = 0;
-  for (auto i = 0; i < 10000; i++) {
+  for (auto i = 0; i < 100000; i++) {
     average_time += time_dataset[i];
   }
-  average_time = average_time / 10000;
+  average_time = average_time / 100000;
 
   cout << "================================================" << endl;
-  cout << "Total operation   :  " << 10000 << endl;
+  cout << "Total operation   :  " << 100000 << endl;
   cout << "Average time      :  " << average_time << endl;
   cout << "================================================" << endl;
 }

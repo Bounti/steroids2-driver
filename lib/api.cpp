@@ -145,11 +145,9 @@ uint32_t target_read_u32(device *io, uint32_t address) {
   uint8_t *buffer = new uint8_t[8]();
   io->receive(buffer, 8);
 
-  res |= buffer[4] << 24;
-  res |= buffer[5] << 16;
-  res |= buffer[6] << 8;
-  res |= buffer[7];
+  printf("> %016lx\n", *((unsigned long int*)&buffer[0]));
 
+  res = *((unsigned long int*)&buffer[0]) >> 4;
   return res;
 }
 
@@ -254,8 +252,8 @@ uint32_t target_read_reg(device *io, uint32_t reg) {
   crafted_packet = my_crafter->craft(c_read, 0xE000EDF8, payload2);
   io->send(crafted_packet.first, crafted_packet.second);
 
-  uint8_t *buffer = new uint8_t[8]();
-  io->receive(buffer, 8);
+  uint8_t *buffer = new uint8_t[16]();
+  io->receive(buffer, 16);
 
   res |= buffer[4] << 24;
   res |= buffer[5] << 16;

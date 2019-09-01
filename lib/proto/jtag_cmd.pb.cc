@@ -5,6 +5,7 @@
 
 #include <algorithm>
 
+#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/extension_set.h>
 #include <google/protobuf/wire_format_lite.h>
@@ -42,7 +43,7 @@ static void InitDefaultsscc_info_HL_COMMAND_jtag_5fcmd_2eproto() {
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_HL_COMMAND_jtag_5fcmd_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_HL_COMMAND_jtag_5fcmd_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_HL_COMMAND_jtag_5fcmd_2eproto}, {
       &scc_info_JTAG_COMMAND_jtag_5fcmd_2eproto.base,}};
 
 static void InitDefaultsscc_info_JTAG_COMMAND_jtag_5fcmd_2eproto() {
@@ -57,7 +58,7 @@ static void InitDefaultsscc_info_JTAG_COMMAND_jtag_5fcmd_2eproto() {
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_JTAG_COMMAND_jtag_5fcmd_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_JTAG_COMMAND_jtag_5fcmd_2eproto}, {}};
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, InitDefaultsscc_info_JTAG_COMMAND_jtag_5fcmd_2eproto}, {}};
 
 static void InitDefaultsscc_info_PROTOCOL_jtag_5fcmd_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -71,11 +72,11 @@ static void InitDefaultsscc_info_PROTOCOL_jtag_5fcmd_2eproto() {
 }
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_PROTOCOL_jtag_5fcmd_2eproto =
-    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_PROTOCOL_jtag_5fcmd_2eproto}, {
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_PROTOCOL_jtag_5fcmd_2eproto}, {
       &scc_info_HL_COMMAND_jtag_5fcmd_2eproto.base,}};
 
 static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_jtag_5fcmd_2eproto[3];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_jtag_5fcmd_2eproto[2];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_jtag_5fcmd_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_jtag_5fcmd_2eproto = nullptr;
 
 const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_jtag_5fcmd_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -94,6 +95,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_jtag_5fcmd_2eproto::offsets[] 
   PROTOBUF_FIELD_OFFSET(::usb2jtag::JTAG_COMMAND, data_),
   PROTOBUF_FIELD_OFFSET(::usb2jtag::JTAG_COMMAND, data_is_other_),
   PROTOBUF_FIELD_OFFSET(::usb2jtag::JTAG_COMMAND, data_is_address_),
+  PROTOBUF_FIELD_OFFSET(::usb2jtag::JTAG_COMMAND, write_back_),
   0,
   1,
   2,
@@ -104,6 +106,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_jtag_5fcmd_2eproto::offsets[] 
   7,
   8,
   9,
+  10,
   PROTOBUF_FIELD_OFFSET(::usb2jtag::HL_COMMAND, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::usb2jtag::HL_COMMAND, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -126,9 +129,9 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_jtag_5fcmd_2eproto::offsets[] 
   ~0u,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 15, sizeof(::usb2jtag::JTAG_COMMAND)},
-  { 25, 33, sizeof(::usb2jtag::HL_COMMAND)},
-  { 36, 43, sizeof(::usb2jtag::PROTOCOL)},
+  { 0, 16, sizeof(::usb2jtag::JTAG_COMMAND)},
+  { 27, 35, sizeof(::usb2jtag::HL_COMMAND)},
+  { 38, 45, sizeof(::usb2jtag::PROTOCOL)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -138,21 +141,20 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_jtag_5fcmd_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\016jtag_cmd.proto\022\010usb2jtag\"\321\002\n\014JTAG_COMM"
-  "AND\0224\n\njtag_start\030\001 \002(\0162 .usb2jtag.JTAG_"
-  "COMMAND.JTAGState\0222\n\010jtag_end\030\002 \002(\0162 .us"
-  "b2jtag.JTAG_COMMAND.JTAGState\022\020\n\010bitcoun"
-  "t\030\003 \002(\r\022\016\n\006period\030\004 \002(\r\022\017\n\007payload\030\005 \002(\004"
-  "\022\023\n\013data_offset\030\006 \002(\r\022\023\n\013data_length\030\007 \002"
-  "(\r\022\014\n\004data\030\010 \002(\004\022\025\n\rdata_is_other\030\t \002(\010\022"
-  "\027\n\017data_is_address\030\n \002(\010\"<\n\tJTAGState\022\010\n"
-  "\004IDLE\020\000\022\t\n\005RESET\020\001\022\014\n\010SHIFT_DR\020\002\022\014\n\010SHIF"
-  "T_IR\020\003\"\235\001\n\nHL_COMMAND\022+\n\004type\030\001 \002(\0162\035.us"
-  "b2jtag.HL_COMMAND.CMD_TYPE\022(\n\010commands\030\002"
-  " \003(\0132\026.usb2jtag.JTAG_COMMAND\022\014\n\004size\030\003 \002"
-  "(\r\"*\n\010CMD_TYPE\022\010\n\004READ\020\000\022\t\n\005WRITE\020\001\022\t\n\005R"
-  "ESET\020\002\"B\n\010PROTOCOL\022\016\n\006target\030\001 \002(\t\022&\n\010co"
-  "mmands\030\002 \003(\0132\024.usb2jtag.HL_COMMAND"
+  "\n\016jtag_cmd.proto\022\010usb2jtag\"\212\002\n\014JTAG_COMM"
+  "AND\022\022\n\njtag_start\030\001 \002(\r\022\020\n\010jtag_end\030\002 \002("
+  "\r\022\023\n\010bitcount\030\003 \002(\r:\0010\022\021\n\006period\030\004 \002(\r:\001"
+  "0\022\022\n\007payload\030\005 \001(\004:\0010\022\026\n\013data_offset\030\006 \001"
+  "(\r:\0010\022\026\n\013data_length\030\007 \001(\r:\0010\022\017\n\004data\030\010 "
+  "\001(\004:\0010\022\034\n\rdata_is_other\030\t \001(\010:\005false\022\036\n\017"
+  "data_is_address\030\n \001(\010:\005false\022\031\n\nwrite_ba"
+  "ck\030\013 \001(\010:\005false\"\235\001\n\nHL_COMMAND\022+\n\004type\030\001"
+  " \002(\0162\035.usb2jtag.HL_COMMAND.CMD_TYPE\022(\n\010c"
+  "ommands\030\002 \003(\0132\026.usb2jtag.JTAG_COMMAND\022\014\n"
+  "\004size\030\003 \002(\r\"*\n\010CMD_TYPE\022\010\n\004READ\020\000\022\t\n\005WRI"
+  "TE\020\001\022\t\n\005RESET\020\002\"B\n\010PROTOCOL\022\016\n\006target\030\001 "
+  "\002(\t\022&\n\010commands\030\002 \003(\0132\024.usb2jtag.HL_COMM"
+  "AND"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_jtag_5fcmd_2eproto_deps[1] = {
 };
@@ -164,7 +166,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_jta
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_jtag_5fcmd_2eproto_once;
 static bool descriptor_table_jtag_5fcmd_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_jtag_5fcmd_2eproto = {
-  &descriptor_table_jtag_5fcmd_2eproto_initialized, descriptor_table_protodef_jtag_5fcmd_2eproto, "jtag_cmd.proto", 594,
+  &descriptor_table_jtag_5fcmd_2eproto_initialized, descriptor_table_protodef_jtag_5fcmd_2eproto, "jtag_cmd.proto", 523,
   &descriptor_table_jtag_5fcmd_2eproto_once, descriptor_table_jtag_5fcmd_2eproto_sccs, descriptor_table_jtag_5fcmd_2eproto_deps, 3, 0,
   schemas, file_default_instances, TableStruct_jtag_5fcmd_2eproto::offsets,
   file_level_metadata_jtag_5fcmd_2eproto, 3, file_level_enum_descriptors_jtag_5fcmd_2eproto, file_level_service_descriptors_jtag_5fcmd_2eproto,
@@ -173,34 +175,9 @@ const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_jtag_5
 // Force running AddDescriptors() at dynamic initialization time.
 static bool dynamic_init_dummy_jtag_5fcmd_2eproto = (  ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptors(&descriptor_table_jtag_5fcmd_2eproto), true);
 namespace usb2jtag {
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* JTAG_COMMAND_JTAGState_descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_jtag_5fcmd_2eproto);
-  return file_level_enum_descriptors_jtag_5fcmd_2eproto[0];
-}
-bool JTAG_COMMAND_JTAGState_IsValid(int value) {
-  switch (value) {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-      return true;
-    default:
-      return false;
-  }
-}
-
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
-constexpr JTAG_COMMAND_JTAGState JTAG_COMMAND::IDLE;
-constexpr JTAG_COMMAND_JTAGState JTAG_COMMAND::RESET;
-constexpr JTAG_COMMAND_JTAGState JTAG_COMMAND::SHIFT_DR;
-constexpr JTAG_COMMAND_JTAGState JTAG_COMMAND::SHIFT_IR;
-constexpr JTAG_COMMAND_JTAGState JTAG_COMMAND::JTAGState_MIN;
-constexpr JTAG_COMMAND_JTAGState JTAG_COMMAND::JTAGState_MAX;
-constexpr int JTAG_COMMAND::JTAGState_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* HL_COMMAND_CMD_TYPE_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_jtag_5fcmd_2eproto);
-  return file_level_enum_descriptors_jtag_5fcmd_2eproto[1];
+  return file_level_enum_descriptors_jtag_5fcmd_2eproto[0];
 }
 bool HL_COMMAND_CMD_TYPE_IsValid(int value) {
   switch (value) {
@@ -259,6 +236,9 @@ class JTAG_COMMAND::_Internal {
   static void set_has_data_is_address(HasBits* has_bits) {
     (*has_bits)[0] |= 512u;
   }
+  static void set_has_write_back(HasBits* has_bits) {
+    (*has_bits)[0] |= 1024u;
+  }
 };
 
 JTAG_COMMAND::JTAG_COMMAND()
@@ -272,15 +252,15 @@ JTAG_COMMAND::JTAG_COMMAND(const JTAG_COMMAND& from)
       _has_bits_(from._has_bits_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   ::memcpy(&jtag_start_, &from.jtag_start_,
-    static_cast<size_t>(reinterpret_cast<char*>(&data_is_address_) -
-    reinterpret_cast<char*>(&jtag_start_)) + sizeof(data_is_address_));
+    static_cast<size_t>(reinterpret_cast<char*>(&write_back_) -
+    reinterpret_cast<char*>(&jtag_start_)) + sizeof(write_back_));
   // @@protoc_insertion_point(copy_constructor:usb2jtag.JTAG_COMMAND)
 }
 
 void JTAG_COMMAND::SharedCtor() {
   ::memset(&jtag_start_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&data_is_address_) -
-      reinterpret_cast<char*>(&jtag_start_)) + sizeof(data_is_address_));
+      reinterpret_cast<char*>(&write_back_) -
+      reinterpret_cast<char*>(&jtag_start_)) + sizeof(write_back_));
 }
 
 JTAG_COMMAND::~JTAG_COMMAND() {
@@ -312,10 +292,10 @@ void JTAG_COMMAND::Clear() {
         reinterpret_cast<char*>(&data_) -
         reinterpret_cast<char*>(&jtag_start_)) + sizeof(data_));
   }
-  if (cached_has_bits & 0x00000300u) {
+  if (cached_has_bits & 0x00000700u) {
     ::memset(&data_is_other_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&data_is_address_) -
-        reinterpret_cast<char*>(&data_is_other_)) + sizeof(data_is_address_));
+        reinterpret_cast<char*>(&write_back_) -
+        reinterpret_cast<char*>(&data_is_other_)) + sizeof(write_back_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
@@ -330,31 +310,23 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // required .usb2jtag.JTAG_COMMAND.JTAGState jtag_start = 1;
+      // required uint32 jtag_start = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          _Internal::set_has_jtag_start(&has_bits);
+          jtag_start_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          if (PROTOBUF_PREDICT_TRUE(::usb2jtag::JTAG_COMMAND_JTAGState_IsValid(val))) {
-            set_jtag_start(static_cast<::usb2jtag::JTAG_COMMAND_JTAGState>(val));
-          } else {
-            ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(1, val, mutable_unknown_fields());
-          }
         } else goto handle_unusual;
         continue;
-      // required .usb2jtag.JTAG_COMMAND.JTAGState jtag_end = 2;
+      // required uint32 jtag_end = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          _Internal::set_has_jtag_end(&has_bits);
+          jtag_end_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          if (PROTOBUF_PREDICT_TRUE(::usb2jtag::JTAG_COMMAND_JTAGState_IsValid(val))) {
-            set_jtag_end(static_cast<::usb2jtag::JTAG_COMMAND_JTAGState>(val));
-          } else {
-            ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(2, val, mutable_unknown_fields());
-          }
         } else goto handle_unusual;
         continue;
-      // required uint32 bitcount = 3;
+      // required uint32 bitcount = 3 [default = 0];
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
           _Internal::set_has_bitcount(&has_bits);
@@ -362,7 +334,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // required uint32 period = 4;
+      // required uint32 period = 4 [default = 0];
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
           _Internal::set_has_period(&has_bits);
@@ -370,7 +342,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // required uint64 payload = 5;
+      // optional uint64 payload = 5 [default = 0];
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
           _Internal::set_has_payload(&has_bits);
@@ -378,7 +350,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // required uint32 data_offset = 6;
+      // optional uint32 data_offset = 6 [default = 0];
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
           _Internal::set_has_data_offset(&has_bits);
@@ -386,7 +358,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // required uint32 data_length = 7;
+      // optional uint32 data_length = 7 [default = 0];
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
           _Internal::set_has_data_length(&has_bits);
@@ -394,7 +366,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // required uint64 data = 8;
+      // optional uint64 data = 8 [default = 0];
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 64)) {
           _Internal::set_has_data(&has_bits);
@@ -402,7 +374,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // required bool data_is_other = 9;
+      // optional bool data_is_other = 9 [default = false];
       case 9:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 72)) {
           _Internal::set_has_data_is_other(&has_bits);
@@ -410,11 +382,19 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // required bool data_is_address = 10;
+      // optional bool data_is_address = 10 [default = false];
       case 10:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 80)) {
           _Internal::set_has_data_is_address(&has_bits);
           data_is_address_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // optional bool write_back = 11 [default = false];
+      case 11:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 88)) {
+          _Internal::set_has_write_back(&has_bits);
+          write_back_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -449,45 +429,33 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .usb2jtag.JTAG_COMMAND.JTAGState jtag_start = 1;
+      // required uint32 jtag_start = 1;
       case 1: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
-          int value = 0;
+          _Internal::set_has_jtag_start(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          if (::usb2jtag::JTAG_COMMAND_JTAGState_IsValid(value)) {
-            set_jtag_start(static_cast< ::usb2jtag::JTAG_COMMAND_JTAGState >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(
-                1, static_cast<::PROTOBUF_NAMESPACE_ID::uint64>(value));
-          }
+                   ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &jtag_start_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // required .usb2jtag.JTAG_COMMAND.JTAGState jtag_end = 2;
+      // required uint32 jtag_end = 2;
       case 2: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (16 & 0xFF)) {
-          int value = 0;
+          _Internal::set_has_jtag_end(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
-                   int, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          if (::usb2jtag::JTAG_COMMAND_JTAGState_IsValid(value)) {
-            set_jtag_end(static_cast< ::usb2jtag::JTAG_COMMAND_JTAGState >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(
-                2, static_cast<::PROTOBUF_NAMESPACE_ID::uint64>(value));
-          }
+                   ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &jtag_end_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // required uint32 bitcount = 3;
+      // required uint32 bitcount = 3 [default = 0];
       case 3: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (24 & 0xFF)) {
           _Internal::set_has_bitcount(&_has_bits_);
@@ -500,7 +468,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint32 period = 4;
+      // required uint32 period = 4 [default = 0];
       case 4: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (32 & 0xFF)) {
           _Internal::set_has_period(&_has_bits_);
@@ -513,7 +481,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint64 payload = 5;
+      // optional uint64 payload = 5 [default = 0];
       case 5: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (40 & 0xFF)) {
           _Internal::set_has_payload(&_has_bits_);
@@ -526,7 +494,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint32 data_offset = 6;
+      // optional uint32 data_offset = 6 [default = 0];
       case 6: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (48 & 0xFF)) {
           _Internal::set_has_data_offset(&_has_bits_);
@@ -539,7 +507,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint32 data_length = 7;
+      // optional uint32 data_length = 7 [default = 0];
       case 7: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (56 & 0xFF)) {
           _Internal::set_has_data_length(&_has_bits_);
@@ -552,7 +520,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint64 data = 8;
+      // optional uint64 data = 8 [default = 0];
       case 8: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (64 & 0xFF)) {
           _Internal::set_has_data(&_has_bits_);
@@ -565,7 +533,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
         break;
       }
 
-      // required bool data_is_other = 9;
+      // optional bool data_is_other = 9 [default = false];
       case 9: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (72 & 0xFF)) {
           _Internal::set_has_data_is_other(&_has_bits_);
@@ -578,13 +546,26 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
         break;
       }
 
-      // required bool data_is_address = 10;
+      // optional bool data_is_address = 10 [default = false];
       case 10: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (80 & 0xFF)) {
           _Internal::set_has_data_is_address(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
                    bool, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BOOL>(
                  input, &data_is_address_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // optional bool write_back = 11 [default = false];
+      case 11: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (88 & 0xFF)) {
+          _Internal::set_has_write_back(&_has_bits_);
+          DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &write_back_)));
         } else {
           goto handle_unusual;
         }
@@ -612,78 +593,140 @@ failure:
 }
 #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
+void JTAG_COMMAND::SerializeWithCachedSizes(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:usb2jtag.JTAG_COMMAND)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required uint32 jtag_start = 1;
+  if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(1, this->jtag_start(), output);
+  }
+
+  // required uint32 jtag_end = 2;
+  if (cached_has_bits & 0x00000002u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(2, this->jtag_end(), output);
+  }
+
+  // required uint32 bitcount = 3 [default = 0];
+  if (cached_has_bits & 0x00000004u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(3, this->bitcount(), output);
+  }
+
+  // required uint32 period = 4 [default = 0];
+  if (cached_has_bits & 0x00000008u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(4, this->period(), output);
+  }
+
+  // optional uint64 payload = 5 [default = 0];
+  if (cached_has_bits & 0x00000010u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64(5, this->payload(), output);
+  }
+
+  // optional uint32 data_offset = 6 [default = 0];
+  if (cached_has_bits & 0x00000020u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(6, this->data_offset(), output);
+  }
+
+  // optional uint32 data_length = 7 [default = 0];
+  if (cached_has_bits & 0x00000040u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(7, this->data_length(), output);
+  }
+
+  // optional uint64 data = 8 [default = 0];
+  if (cached_has_bits & 0x00000080u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64(8, this->data(), output);
+  }
+
+  // optional bool data_is_other = 9 [default = false];
+  if (cached_has_bits & 0x00000100u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBool(9, this->data_is_other(), output);
+  }
+
+  // optional bool data_is_address = 10 [default = false];
+  if (cached_has_bits & 0x00000200u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBool(10, this->data_is_address(), output);
+  }
+
+  // optional bool write_back = 11 [default = false];
+  if (cached_has_bits & 0x00000400u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBool(11, this->write_back(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:usb2jtag.JTAG_COMMAND)
+}
+
 ::PROTOBUF_NAMESPACE_ID::uint8* JTAG_COMMAND::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:usb2jtag.JTAG_COMMAND)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  // required .usb2jtag.JTAG_COMMAND.JTAGState jtag_start = 1;
+  // required uint32 jtag_start = 1;
   if (cached_has_bits & 0x00000001u) {
-    stream->EnsureSpace(&target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
-      1, this->jtag_start(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->jtag_start(), target);
   }
 
-  // required .usb2jtag.JTAG_COMMAND.JTAGState jtag_end = 2;
+  // required uint32 jtag_end = 2;
   if (cached_has_bits & 0x00000002u) {
-    stream->EnsureSpace(&target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
-      2, this->jtag_end(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(2, this->jtag_end(), target);
   }
 
-  // required uint32 bitcount = 3;
+  // required uint32 bitcount = 3 [default = 0];
   if (cached_has_bits & 0x00000004u) {
-    stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(3, this->bitcount(), target);
   }
 
-  // required uint32 period = 4;
+  // required uint32 period = 4 [default = 0];
   if (cached_has_bits & 0x00000008u) {
-    stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(4, this->period(), target);
   }
 
-  // required uint64 payload = 5;
+  // optional uint64 payload = 5 [default = 0];
   if (cached_has_bits & 0x00000010u) {
-    stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(5, this->payload(), target);
   }
 
-  // required uint32 data_offset = 6;
+  // optional uint32 data_offset = 6 [default = 0];
   if (cached_has_bits & 0x00000020u) {
-    stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(6, this->data_offset(), target);
   }
 
-  // required uint32 data_length = 7;
+  // optional uint32 data_length = 7 [default = 0];
   if (cached_has_bits & 0x00000040u) {
-    stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(7, this->data_length(), target);
   }
 
-  // required uint64 data = 8;
+  // optional uint64 data = 8 [default = 0];
   if (cached_has_bits & 0x00000080u) {
-    stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt64ToArray(8, this->data(), target);
   }
 
-  // required bool data_is_other = 9;
+  // optional bool data_is_other = 9 [default = false];
   if (cached_has_bits & 0x00000100u) {
-    stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(9, this->data_is_other(), target);
   }
 
-  // required bool data_is_address = 10;
+  // optional bool data_is_address = 10 [default = false];
   if (cached_has_bits & 0x00000200u) {
-    stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(10, this->data_is_address(), target);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target, stream);
+  // optional bool write_back = 11 [default = false];
+  if (cached_has_bits & 0x00000400u) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(11, this->write_back(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:usb2jtag.JTAG_COMMAND)
   return target;
@@ -694,67 +737,31 @@ size_t JTAG_COMMAND::RequiredFieldsByteSizeFallback() const {
   size_t total_size = 0;
 
   if (has_jtag_start()) {
-    // required .usb2jtag.JTAG_COMMAND.JTAGState jtag_start = 1;
+    // required uint32 jtag_start = 1;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->jtag_start());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->jtag_start());
   }
 
   if (has_jtag_end()) {
-    // required .usb2jtag.JTAG_COMMAND.JTAGState jtag_end = 2;
+    // required uint32 jtag_end = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->jtag_end());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->jtag_end());
   }
 
   if (has_bitcount()) {
-    // required uint32 bitcount = 3;
+    // required uint32 bitcount = 3 [default = 0];
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->bitcount());
   }
 
   if (has_period()) {
-    // required uint32 period = 4;
+    // required uint32 period = 4 [default = 0];
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->period());
-  }
-
-  if (has_payload()) {
-    // required uint64 payload = 5;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
-        this->payload());
-  }
-
-  if (has_data_offset()) {
-    // required uint32 data_offset = 6;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->data_offset());
-  }
-
-  if (has_data_length()) {
-    // required uint32 data_length = 7;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->data_length());
-  }
-
-  if (has_data()) {
-    // required uint64 data = 8;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
-        this->data());
-  }
-
-  if (has_data_is_other()) {
-    // required bool data_is_other = 9;
-    total_size += 1 + 1;
-  }
-
-  if (has_data_is_address()) {
-    // required bool data_is_address = 10;
-    total_size += 1 + 1;
   }
 
   return total_size;
@@ -763,50 +770,31 @@ size_t JTAG_COMMAND::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:usb2jtag.JTAG_COMMAND)
   size_t total_size = 0;
 
-  if (((_has_bits_[0] & 0x000003ff) ^ 0x000003ff) == 0) {  // All required fields are present.
-    // required .usb2jtag.JTAG_COMMAND.JTAGState jtag_start = 1;
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
+    // required uint32 jtag_start = 1;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->jtag_start());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->jtag_start());
 
-    // required .usb2jtag.JTAG_COMMAND.JTAGState jtag_end = 2;
+    // required uint32 jtag_end = 2;
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->jtag_end());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+        this->jtag_end());
 
-    // required uint32 bitcount = 3;
+    // required uint32 bitcount = 3 [default = 0];
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->bitcount());
 
-    // required uint32 period = 4;
+    // required uint32 period = 4 [default = 0];
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
         this->period());
-
-    // required uint64 payload = 5;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
-        this->payload());
-
-    // required uint32 data_offset = 6;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->data_offset());
-
-    // required uint32 data_length = 7;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
-        this->data_length());
-
-    // required uint64 data = 8;
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
-        this->data());
-
-    // required bool data_is_other = 9;
-    total_size += 1 + 1;
-
-    // required bool data_is_address = 10;
-    total_size += 1 + 1;
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -815,9 +803,53 @@ size_t JTAG_COMMAND::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
+  cached_has_bits = _has_bits_[0];
+  if (cached_has_bits & 0x000000f0u) {
+    // optional uint64 payload = 5 [default = 0];
+    if (cached_has_bits & 0x00000010u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+          this->payload());
+    }
+
+    // optional uint32 data_offset = 6 [default = 0];
+    if (cached_has_bits & 0x00000020u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+          this->data_offset());
+    }
+
+    // optional uint32 data_length = 7 [default = 0];
+    if (cached_has_bits & 0x00000040u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+          this->data_length());
+    }
+
+    // optional uint64 data = 8 [default = 0];
+    if (cached_has_bits & 0x00000080u) {
+      total_size += 1 +
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt64Size(
+          this->data());
+    }
+
+  }
+  if (cached_has_bits & 0x00000700u) {
+    // optional bool data_is_other = 9 [default = false];
+    if (cached_has_bits & 0x00000100u) {
+      total_size += 1 + 1;
+    }
+
+    // optional bool data_is_address = 10 [default = false];
+    if (cached_has_bits & 0x00000200u) {
+      total_size += 1 + 1;
+    }
+
+    // optional bool write_back = 11 [default = false];
+    if (cached_has_bits & 0x00000400u) {
+      total_size += 1 + 1;
+    }
+
   }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
@@ -874,12 +906,15 @@ void JTAG_COMMAND::MergeFrom(const JTAG_COMMAND& from) {
     }
     _has_bits_[0] |= cached_has_bits;
   }
-  if (cached_has_bits & 0x00000300u) {
+  if (cached_has_bits & 0x00000700u) {
     if (cached_has_bits & 0x00000100u) {
       data_is_other_ = from.data_is_other_;
     }
     if (cached_has_bits & 0x00000200u) {
       data_is_address_ = from.data_is_address_;
+    }
+    if (cached_has_bits & 0x00000400u) {
+      write_back_ = from.write_back_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -900,7 +935,7 @@ void JTAG_COMMAND::CopyFrom(const JTAG_COMMAND& from) {
 }
 
 bool JTAG_COMMAND::IsInitialized() const {
-  if ((_has_bits_[0] & 0x000003ff) != 0x000003ff) return false;
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
   return true;
 }
 
@@ -918,6 +953,7 @@ void JTAG_COMMAND::InternalSwap(JTAG_COMMAND* other) {
   swap(data_, other->data_);
   swap(data_is_other_, other->data_is_other_);
   swap(data_is_address_, other->data_is_address_);
+  swap(write_back_, other->write_back_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata JTAG_COMMAND::GetMetadata() const {
@@ -1028,7 +1064,7 @@ const char* HL_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
             ptr = ctx->ParseMessage(add_commands(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 18);
         } else goto handle_unusual;
         continue;
       // required uint32 size = 3;
@@ -1134,8 +1170,42 @@ failure:
 }
 #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
+void HL_COMMAND::SerializeWithCachedSizes(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:usb2jtag.HL_COMMAND)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required .usb2jtag.HL_COMMAND.CMD_TYPE type = 1;
+  if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnum(
+      1, this->type(), output);
+  }
+
+  // repeated .usb2jtag.JTAG_COMMAND commands = 2;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->commands_size()); i < n; i++) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2,
+      this->commands(static_cast<int>(i)),
+      output);
+  }
+
+  // required uint32 size = 3;
+  if (cached_has_bits & 0x00000002u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32(3, this->size(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:usb2jtag.HL_COMMAND)
+}
+
 ::PROTOBUF_NAMESPACE_ID::uint8* HL_COMMAND::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:usb2jtag.HL_COMMAND)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1143,28 +1213,26 @@ failure:
   cached_has_bits = _has_bits_[0];
   // required .usb2jtag.HL_COMMAND.CMD_TYPE type = 1;
   if (cached_has_bits & 0x00000001u) {
-    stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
       1, this->type(), target);
   }
 
   // repeated .usb2jtag.JTAG_COMMAND commands = 2;
-  for (auto it = this->commands_.pointer_begin(),
-            end = this->commands_.pointer_end(); it < end; ++it) {
-    stream->EnsureSpace(&target);
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->commands_size()); i < n; i++) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(2, **it, target, stream);
+      InternalWriteMessageToArray(
+        2, this->commands(static_cast<int>(i)), target);
   }
 
   // required uint32 size = 3;
   if (cached_has_bits & 0x00000002u) {
-    stream->EnsureSpace(&target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(3, this->size(), target);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target, stream);
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:usb2jtag.HL_COMMAND)
   return target;
@@ -1193,6 +1261,11 @@ size_t HL_COMMAND::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:usb2jtag.HL_COMMAND)
   size_t total_size = 0;
 
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
   if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
     // required .usb2jtag.HL_COMMAND.CMD_TYPE type = 1;
     total_size += 1 +
@@ -1211,16 +1284,16 @@ size_t HL_COMMAND::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // repeated .usb2jtag.JTAG_COMMAND commands = 2;
-  total_size += 1UL * this->commands_size();
-  for (const auto& msg : this->commands_) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  {
+    unsigned int count = static_cast<unsigned int>(this->commands_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          this->commands(static_cast<int>(i)));
+    }
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -1285,7 +1358,7 @@ void HL_COMMAND::InternalSwap(HL_COMMAND* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  commands_.InternalSwap(&other->commands_);
+  CastToBase(&commands_)->InternalSwap(CastToBase(&other->commands_));
   swap(type_, other->type_);
   swap(size_, other->size_);
 }
@@ -1319,7 +1392,7 @@ PROTOCOL::PROTOCOL(const PROTOCOL& from)
       commands_(from.commands_) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   target_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (from._internal_has_target()) {
+  if (from.has_target()) {
     target_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.target_);
   }
   // @@protoc_insertion_point(copy_constructor:usb2jtag.PROTOCOL)
@@ -1375,7 +1448,7 @@ const char* PROTOCOL::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
       // required string target = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(_internal_mutable_target(), ptr, ctx, "usb2jtag.PROTOCOL.target");
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParserUTF8Verify(mutable_target(), ptr, ctx, "usb2jtag.PROTOCOL.target");
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1388,7 +1461,7 @@ const char* PROTOCOL::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
             ptr = ctx->ParseMessage(add_commands(), ptr);
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 18);
         } else goto handle_unusual;
         continue;
       default: {
@@ -1426,9 +1499,9 @@ bool PROTOCOL::MergePartialFromCodedStream(
       case 1: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
           DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadString(
-                input, this->_internal_mutable_target()));
+                input, this->mutable_target()));
           ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->_internal_target().data(), static_cast<int>(this->_internal_target().length()),
+            this->target().data(), static_cast<int>(this->target().length()),
             ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::PARSE,
             "usb2jtag.PROTOCOL.target");
         } else {
@@ -1469,8 +1542,41 @@ failure:
 }
 #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 
+void PROTOCOL::SerializeWithCachedSizes(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:usb2jtag.PROTOCOL)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = _has_bits_[0];
+  // required string target = 1;
+  if (cached_has_bits & 0x00000001u) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->target().data(), static_cast<int>(this->target().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
+      "usb2jtag.PROTOCOL.target");
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringMaybeAliased(
+      1, this->target(), output);
+  }
+
+  // repeated .usb2jtag.HL_COMMAND commands = 2;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->commands_size()); i < n; i++) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2,
+      this->commands(static_cast<int>(i)),
+      output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:usb2jtag.PROTOCOL)
+}
+
 ::PROTOBUF_NAMESPACE_ID::uint8* PROTOCOL::InternalSerializeWithCachedSizesToArray(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:usb2jtag.PROTOCOL)
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1479,24 +1585,25 @@ failure:
   // required string target = 1;
   if (cached_has_bits & 0x00000001u) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->_internal_target().data(), static_cast<int>(this->_internal_target().length()),
+      this->target().data(), static_cast<int>(this->target().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
       "usb2jtag.PROTOCOL.target");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_target(), target);
+    target =
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteStringToArray(
+        1, this->target(), target);
   }
 
   // repeated .usb2jtag.HL_COMMAND commands = 2;
-  for (auto it = this->commands_.pointer_begin(),
-            end = this->commands_.pointer_end(); it < end; ++it) {
-    stream->EnsureSpace(&target);
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->commands_size()); i < n; i++) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessageToArray(2, **it, target, stream);
+      InternalWriteMessageToArray(
+        2, this->commands(static_cast<int>(i)), target);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target, stream);
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:usb2jtag.PROTOCOL)
   return target;
@@ -1506,27 +1613,32 @@ size_t PROTOCOL::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:usb2jtag.PROTOCOL)
   size_t total_size = 0;
 
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
   // required string target = 1;
   if (has_target()) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_target());
+        this->target());
   }
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .usb2jtag.HL_COMMAND commands = 2;
-  total_size += 1UL * this->commands_size();
-  for (const auto& msg : this->commands_) {
-    total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  {
+    unsigned int count = static_cast<unsigned int>(this->commands_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          this->commands(static_cast<int>(i)));
+    }
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
   int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -1585,7 +1697,7 @@ void PROTOCOL::InternalSwap(PROTOCOL* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  commands_.InternalSwap(&other->commands_);
+  CastToBase(&commands_)->InternalSwap(CastToBase(&other->commands_));
   target_.Swap(&other->target_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
 }
