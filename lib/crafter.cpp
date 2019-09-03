@@ -45,10 +45,22 @@ crafter::crafter(std::string config_file) {
   {
     // Read the existing address book.
     fstream input(config_file.c_str(), ios::in | ios::binary);
-    if (!protocol->ParseFromIstream(&input)) {
+    if (!protocols->ParseFromIstream(&input)) {
       return;
     }
   }
+}
+
+bool crafter::select_protocol(std::string protocol_name) {
+
+  for( auto i=0; i<protocols->protocols_size(); i++) {
+    const ::usb2jtag::PROTOCOL& proto = protocols->protocols(i);
+    if( proto.target().compare(protocol_name) == 0) { 
+     protocol_index = i; 
+     return true;
+    }
+  }
+  return false;
 }
 
 crafter::~crafter() {
@@ -57,11 +69,13 @@ crafter::~crafter() {
 
 void crafter::print_protocol() {
 
-  std::cout << "Protocol" << std::endl;
-  std::cout << "    Name: " << protocol->target() << std::endl;
+  const usb2jtag::PROTOCOL protocol = protocols->protocols(protocol_index); 
 
-  for( auto i=0; i<protocol->commands_size(); i++) {
-    const ::usb2jtag::HL_COMMAND& cmd = protocol->commands(i);
+  std::cout << "Protocol" << std::endl;
+  std::cout << "    Name: " << protocol.target() << std::endl;
+
+  for( auto i=0; i<protocol.commands_size(); i++) {
+    const ::usb2jtag::HL_COMMAND& cmd = protocol.commands(i);
 
     std::cout << "  Type: " << cmd.type() << std::endl;
     std::cout << "  Size: " << cmd.size() << std::endl;
@@ -89,11 +103,11 @@ pair<uint8_t *, uint64_t> crafter::craft(COMMAND cmd_type, uint32_t addr,
                                          uint32_t payload) {
 
   uint8_t *packet = NULL;
-  //uint64_t size = sizeof(addr_size);
+  const usb2jtag::PROTOCOL protocol = protocols->protocols(protocol_index); 
 
   // First we look into the jtag_pkt to find the jtag sequence description
-  for( auto i=0; i<protocol->commands_size(); i++) {
-    const ::usb2jtag::HL_COMMAND& cmd = protocol->commands(i);
+  for( auto i=0; i<protocol.commands_size(); i++) {
+    const ::usb2jtag::HL_COMMAND& cmd = protocol.commands(i);
 
     if( cmd.type() == (int)cmd_type ) {
 
@@ -125,22 +139,6 @@ pair<uint8_t *, uint64_t> crafter::craft(COMMAND cmd_type, uint32_t addr,
          be_packet |= 0x8000000000000000;
 
          *raw_packet = be_packet;
-         //*raw_packet = 0x1100000000000000;
-          // switch to little endian
-          //*raw_packet = 0;
-          //*raw_packet |= ((be_packet & 0xFF00000000000000) >> 56);
-          //*raw_packet |= ((be_packet & 0x00FF000000000000) >> 40);
-          //*raw_packet |= ((be_packet & 0x0000FF0000000000) >> 24);
-          //*raw_packet |= ((be_packet & 0x000000FF00000000) >> 8);
-          //*raw_packet |= ((be_packet & 0x00000000FF000000) << 8);
-          //*raw_packet |= ((be_packet & 0x0000000000FF0000) << 24);
-          //*raw_packet |= ((be_packet & 0x000000000000FF00) << 40);
-          //*raw_packet |= ((be_packet & 0x00000000000000FF) << 56);
-
-          // switch word to little endian too
-          //raw_packet[0] = ((raw_packet[0] >> 32)& 0xFFFFFFFF) | ((raw_packet[0] & 0xFFFFFFFF) << 32);
-          //
-          //raw_packet[0] = ((raw_packet[0] & 0xFFFFFFFF) << 32) | ((raw_packet[0] >> 32)& 0xFFFFFFFF);  
       }
 
       //printf("\n\n");
@@ -157,58 +155,3 @@ pair<uint8_t *, uint64_t> crafter::craft(COMMAND cmd_type, uint32_t addr,
   return make_pair(packet, 0);
 }
 
-pair<uint8_t *, uint64_t> crafter::craft(COMMAND cmd_type, uint32_t addr,
-                                         std::string payload) {
-
-  // We need to split payload in 32bits chunk 
-  if( payload.size() > 4) {
-    uint32_t ui32_payload = 0; 
-
-    // If our payload is not 4bytes aligned, we add 4bytes more.
-    uint32_t extension = ((payload.size() % 4) == 1 ? 4 : 0);
-
-    uint8_t *packet = new uint8_t[(payload.size()/4)+extension];
-
-    uint32_t size = 0;
-
-    // For each 4byte chunk
-    for(auto k=0; k<payload.size(); k+=4) {
-      ///for(auto i=k; i<payload.size(); i++) {
-      //  // little endian
-      //  ui32_payload = (payload[i] << (24 - (i*8)));
-      //}
-      ui32_payload = 0xAAAAAAAA;
-      auto packet_chunk = craft(cmd_type, addr, ui32_payload);
-
-      size += packet_chunk.second;
-
-      memcpy((void*)packet[k],(void*) packet_chunk.first, packet_chunk.second);
-      delete packet_chunk.first;
-    }
-    //ui32_payload = (payload[0] << 24) | (payload[1] << 16) | (payload[2] << 8) | (payload[3]);
-    return craft(cmd_type, addr, ui32_payload); 
-  } else {
-    
-    uint32_t ui32_payload = 0; 
-
-    for(auto i=0; i<payload.size(); i++) {
-      // little endian
-      ui32_payload = (payload[i] << (24 - (i*8)));
-    }
-    //ui32_payload = (payload[0] << 24) | (payload[1] << 16) | (payload[2] << 8) | (payload[3]);
-    return craft(cmd_type, addr, ui32_payload);
-  } 
-}
-
-void crafter::le_copy_to(uint8_t *dst, const char *src, uint32_t size) {
-  uint32_t i;
-
-  m_assert(size < 4088); // USB3 packet limitation
-
-  for (i = 0; i < size; i += 4) {
-    dst[i] = src[i + 3];
-    dst[i + 1] = src[i + 2];
-    dst[i + 2] = src[i + 1];
-    dst[i + 3] = src[i];
-  }
-}

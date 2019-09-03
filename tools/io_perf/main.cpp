@@ -2,6 +2,7 @@
 
 #include <chrono>
 #include <ctime>
+#include <unistd.h>
 
 using namespace std;
 
@@ -18,43 +19,52 @@ int main(int argc, char *argv[]) {
 
   int32_t max_cycles = 100000;
 
-  if (argc == 2) {
-    max_cycles = atoi(argv[1]);
+  if (argc != 3) {
+    std::cout << "Wrong arguments: " << argv[0] << " <max_cycles> <protocol_name>" << std::endl; 
+    return 0;
   }
+
+  max_cycles = atoi(argv[1]);
 
   device *io = target_init();
 
-  //uint8_t *buffer = new uint8_t[8]();
-  //io->receive(buffer, 8);
-
-  load_protocol();
+  load_protocol(argv[2]);
   
   target_reset(io);
 
+  //uint32_t address = 0x10000000, size = 0x4;
   uint32_t address = 0x2000C000, size = 0x4;
 
-  uint32_t wdata = {0xBAB00001};
+  uint32_t wdata = {0x00000000};
 
   struct timespec start, end;
   clock_gettime(CLOCK_MONOTONIC, &start);
 
   for (auto i = 0; i < max_cycles; i++) {
-    wdata += i;
+    wdata++;
 
-    target_write(io, address, wdata);
+    target_write_u32(io, address, wdata);
 
-    uint32_t data = target_read_u32(io, address);
+    uint64_t raw_data = target_read_u32(io, address);
+
+    //uint32_t data = (raw_data >> 2) & 0xFFFFFFFF;
+    uint32_t data = (raw_data >> 4) & 0xFFFFFFFF;
 
     if (memcmp((const void*)&data, (const void*)&wdata, 4) != 0) {
 
       cout << "Test " << i << " failed...";
-      cout << "    Expecting " << std::hex << wdata;
-      cout << " but get 0x" << std::hex << data;
+      cout << "    Expecting " << wdata;
+      cout << " but get 0x" << data;
       cout << " at 0x" << std::hex << address;
       cout << endl;
 
       return 0;
     }
+
+    cout << "Test " << i << "    > " << wdata << " < " << data;
+    cout << endl;
+
+    ///sleep(1);
 
     // address += 4;
   }

@@ -19,14 +19,23 @@ PROTOBUF_GENERATE_CPP(PROTO_SRC1 PROTO_HEADER1 ../conf/jtag_cmd.proto)
 
 SET_SOURCE_FILES_PROPERTIES(${PROTO_SRC1} ${PROTO_HEADER1} PROPERTIES GENERATED TRUE)
 
-ADD_LIBRARY(inception_driver STATIC
+ADD_LIBRARY(usb2jtag STATIC
   ${PROTO_SRC1}
   crafter.cpp
   device.cpp
   api.cpp
 )
 
-target_link_libraries(inception_driver pthread usb-1.0 ${PROTOBUF_LIBRARY})
+ADD_LIBRARY(usb2jtag.so SHARED
+  ${PROTO_SRC1}
+  crafter.cpp
+  device.cpp
+  api.cpp
+)
 
-install(TARGETS inception_driver DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+target_link_libraries(usb2jtag pthread usb-1.0 ${PROTOBUF_LIBRARY})
+
+target_link_libraries(usb2jtag.so pthread usb-1.0 ${PROTOBUF_LIBRARY})
+
+install(TARGETS usb2jtag DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 

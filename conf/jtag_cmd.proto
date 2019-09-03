@@ -35,5 +35,5 @@ message PROTOCOL {
 }
 
 message PROTOCOLS {
-  required PROTOCOL protocol = 1;
+  repeated PROTOCOL protocols = 1;
 }

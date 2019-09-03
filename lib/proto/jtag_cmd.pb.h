@@ -48,7 +48,7 @@ struct TableStruct_jtag_5fcmd_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[3]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -65,11 +65,15 @@ extern JTAG_COMMANDDefaultTypeInternal _JTAG_COMMAND_default_instance_;
 class PROTOCOL;
 class PROTOCOLDefaultTypeInternal;
 extern PROTOCOLDefaultTypeInternal _PROTOCOL_default_instance_;
+class PROTOCOLS;
+class PROTOCOLSDefaultTypeInternal;
+extern PROTOCOLSDefaultTypeInternal _PROTOCOLS_default_instance_;
 }  // namespace usb2jtag
 PROTOBUF_NAMESPACE_OPEN
 template<> ::usb2jtag::HL_COMMAND* Arena::CreateMaybeMessage<::usb2jtag::HL_COMMAND>(Arena*);
 template<> ::usb2jtag::JTAG_COMMAND* Arena::CreateMaybeMessage<::usb2jtag::JTAG_COMMAND>(Arena*);
 template<> ::usb2jtag::PROTOCOL* Arena::CreateMaybeMessage<::usb2jtag::PROTOCOL>(Arena*);
+template<> ::usb2jtag::PROTOCOLS* Arena::CreateMaybeMessage<::usb2jtag::PROTOCOLS>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace usb2jtag {
 
@@ -675,6 +679,151 @@ class PROTOCOL :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr target_;
   friend struct ::TableStruct_jtag_5fcmd_2eproto;
 };
+// -------------------------------------------------------------------
+
+class PROTOCOLS :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:usb2jtag.PROTOCOLS) */ {
+ public:
+  PROTOCOLS();
+  virtual ~PROTOCOLS();
+
+  PROTOCOLS(const PROTOCOLS& from);
+  PROTOCOLS(PROTOCOLS&& from) noexcept
+    : PROTOCOLS() {
+    *this = ::std::move(from);
+  }
+
+  inline PROTOCOLS& operator=(const PROTOCOLS& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PROTOCOLS& operator=(PROTOCOLS&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const PROTOCOLS& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PROTOCOLS* internal_default_instance() {
+    return reinterpret_cast<const PROTOCOLS*>(
+               &_PROTOCOLS_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(PROTOCOLS& a, PROTOCOLS& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(PROTOCOLS* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PROTOCOLS* New() const final {
+    return CreateMaybeMessage<PROTOCOLS>(nullptr);
+  }
+
+  PROTOCOLS* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<PROTOCOLS>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const PROTOCOLS& from);
+  void MergeFrom(const PROTOCOLS& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  #else
+  bool MergePartialFromCodedStream(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* InternalSerializeWithCachedSizesToArray(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PROTOCOLS* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "usb2jtag.PROTOCOLS";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_jtag_5fcmd_2eproto);
+    return ::descriptor_table_jtag_5fcmd_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kProtocolsFieldNumber = 1,
+  };
+  // repeated .usb2jtag.PROTOCOL protocols = 1;
+  int protocols_size() const;
+  void clear_protocols();
+  ::usb2jtag::PROTOCOL* mutable_protocols(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::usb2jtag::PROTOCOL >*
+      mutable_protocols();
+  const ::usb2jtag::PROTOCOL& protocols(int index) const;
+  ::usb2jtag::PROTOCOL* add_protocols();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::usb2jtag::PROTOCOL >&
+      protocols() const;
+
+  // @@protoc_insertion_point(class_scope:usb2jtag.PROTOCOLS)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::usb2jtag::PROTOCOL > protocols_;
+  friend struct ::TableStruct_jtag_5fcmd_2eproto;
+};
 // ===================================================================
 
 
@@ -1047,9 +1196,45 @@ PROTOCOL::commands() const {
   return commands_;
 }
 
+// -------------------------------------------------------------------
+
+// PROTOCOLS
+
+// repeated .usb2jtag.PROTOCOL protocols = 1;
+inline int PROTOCOLS::protocols_size() const {
+  return protocols_.size();
+}
+inline void PROTOCOLS::clear_protocols() {
+  protocols_.Clear();
+}
+inline ::usb2jtag::PROTOCOL* PROTOCOLS::mutable_protocols(int index) {
+  // @@protoc_insertion_point(field_mutable:usb2jtag.PROTOCOLS.protocols)
+  return protocols_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::usb2jtag::PROTOCOL >*
+PROTOCOLS::mutable_protocols() {
+  // @@protoc_insertion_point(field_mutable_list:usb2jtag.PROTOCOLS.protocols)
+  return &protocols_;
+}
+inline const ::usb2jtag::PROTOCOL& PROTOCOLS::protocols(int index) const {
+  // @@protoc_insertion_point(field_get:usb2jtag.PROTOCOLS.protocols)
+  return protocols_.Get(index);
+}
+inline ::usb2jtag::PROTOCOL* PROTOCOLS::add_protocols() {
+  // @@protoc_insertion_point(field_add:usb2jtag.PROTOCOLS.protocols)
+  return protocols_.Add();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::usb2jtag::PROTOCOL >&
+PROTOCOLS::protocols() const {
+  // @@protoc_insertion_point(field_list:usb2jtag.PROTOCOLS.protocols)
+  return protocols_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

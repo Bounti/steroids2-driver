@@ -17,6 +17,7 @@
 #include <google/protobuf/port_def.inc>
 extern PROTOBUF_INTERNAL_EXPORT_jtag_5fcmd_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_HL_COMMAND_jtag_5fcmd_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_jtag_5fcmd_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_JTAG_COMMAND_jtag_5fcmd_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_jtag_5fcmd_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_PROTOCOL_jtag_5fcmd_2eproto;
 namespace usb2jtag {
 class JTAG_COMMANDDefaultTypeInternal {
  public:
@@ -30,6 +31,10 @@ class PROTOCOLDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PROTOCOL> _instance;
 } _PROTOCOL_default_instance_;
+class PROTOCOLSDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PROTOCOLS> _instance;
+} _PROTOCOLS_default_instance_;
 }  // namespace usb2jtag
 static void InitDefaultsscc_info_HL_COMMAND_jtag_5fcmd_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -75,7 +80,22 @@ static void InitDefaultsscc_info_PROTOCOL_jtag_5fcmd_2eproto() {
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_PROTOCOL_jtag_5fcmd_2eproto}, {
       &scc_info_HL_COMMAND_jtag_5fcmd_2eproto.base,}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_jtag_5fcmd_2eproto[3];
+static void InitDefaultsscc_info_PROTOCOLS_jtag_5fcmd_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::usb2jtag::_PROTOCOLS_default_instance_;
+    new (ptr) ::usb2jtag::PROTOCOLS();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::usb2jtag::PROTOCOLS::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_PROTOCOLS_jtag_5fcmd_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, InitDefaultsscc_info_PROTOCOLS_jtag_5fcmd_2eproto}, {
+      &scc_info_PROTOCOL_jtag_5fcmd_2eproto.base,}};
+
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_jtag_5fcmd_2eproto[4];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_jtag_5fcmd_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_jtag_5fcmd_2eproto = nullptr;
 
@@ -127,17 +147,26 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_jtag_5fcmd_2eproto::offsets[] 
   PROTOBUF_FIELD_OFFSET(::usb2jtag::PROTOCOL, commands_),
   0,
   ~0u,
+  PROTOBUF_FIELD_OFFSET(::usb2jtag::PROTOCOLS, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::usb2jtag::PROTOCOLS, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::usb2jtag::PROTOCOLS, protocols_),
+  ~0u,
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 16, sizeof(::usb2jtag::JTAG_COMMAND)},
   { 27, 35, sizeof(::usb2jtag::HL_COMMAND)},
   { 38, 45, sizeof(::usb2jtag::PROTOCOL)},
+  { 47, 53, sizeof(::usb2jtag::PROTOCOLS)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::usb2jtag::_JTAG_COMMAND_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::usb2jtag::_HL_COMMAND_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::usb2jtag::_PROTOCOL_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::usb2jtag::_PROTOCOLS_default_instance_),
 };
 
 const char descriptor_table_protodef_jtag_5fcmd_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -154,22 +183,24 @@ const char descriptor_table_protodef_jtag_5fcmd_2eproto[] PROTOBUF_SECTION_VARIA
   "\004size\030\003 \002(\r\"*\n\010CMD_TYPE\022\010\n\004READ\020\000\022\t\n\005WRI"
   "TE\020\001\022\t\n\005RESET\020\002\"B\n\010PROTOCOL\022\016\n\006target\030\001 "
   "\002(\t\022&\n\010commands\030\002 \003(\0132\024.usb2jtag.HL_COMM"
-  "AND"
+  "AND\"2\n\tPROTOCOLS\022%\n\tprotocols\030\001 \003(\0132\022.us"
+  "b2jtag.PROTOCOL"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_jtag_5fcmd_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_jtag_5fcmd_2eproto_sccs[3] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_jtag_5fcmd_2eproto_sccs[4] = {
   &scc_info_HL_COMMAND_jtag_5fcmd_2eproto.base,
   &scc_info_JTAG_COMMAND_jtag_5fcmd_2eproto.base,
   &scc_info_PROTOCOL_jtag_5fcmd_2eproto.base,
+  &scc_info_PROTOCOLS_jtag_5fcmd_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_jtag_5fcmd_2eproto_once;
 static bool descriptor_table_jtag_5fcmd_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_jtag_5fcmd_2eproto = {
-  &descriptor_table_jtag_5fcmd_2eproto_initialized, descriptor_table_protodef_jtag_5fcmd_2eproto, "jtag_cmd.proto", 523,
-  &descriptor_table_jtag_5fcmd_2eproto_once, descriptor_table_jtag_5fcmd_2eproto_sccs, descriptor_table_jtag_5fcmd_2eproto_deps, 3, 0,
+  &descriptor_table_jtag_5fcmd_2eproto_initialized, descriptor_table_protodef_jtag_5fcmd_2eproto, "jtag_cmd.proto", 575,
+  &descriptor_table_jtag_5fcmd_2eproto_once, descriptor_table_jtag_5fcmd_2eproto_sccs, descriptor_table_jtag_5fcmd_2eproto_deps, 4, 0,
   schemas, file_default_instances, TableStruct_jtag_5fcmd_2eproto::offsets,
-  file_level_metadata_jtag_5fcmd_2eproto, 3, file_level_enum_descriptors_jtag_5fcmd_2eproto, file_level_service_descriptors_jtag_5fcmd_2eproto,
+  file_level_metadata_jtag_5fcmd_2eproto, 4, file_level_enum_descriptors_jtag_5fcmd_2eproto, file_level_service_descriptors_jtag_5fcmd_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -1707,6 +1738,272 @@ void PROTOCOL::InternalSwap(PROTOCOL* other) {
 }
 
 
+// ===================================================================
+
+void PROTOCOLS::InitAsDefaultInstance() {
+}
+class PROTOCOLS::_Internal {
+ public:
+  using HasBits = decltype(std::declval<PROTOCOLS>()._has_bits_);
+};
+
+PROTOCOLS::PROTOCOLS()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:usb2jtag.PROTOCOLS)
+}
+PROTOCOLS::PROTOCOLS(const PROTOCOLS& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
+      _has_bits_(from._has_bits_),
+      protocols_(from.protocols_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:usb2jtag.PROTOCOLS)
+}
+
+void PROTOCOLS::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_PROTOCOLS_jtag_5fcmd_2eproto.base);
+}
+
+PROTOCOLS::~PROTOCOLS() {
+  // @@protoc_insertion_point(destructor:usb2jtag.PROTOCOLS)
+  SharedDtor();
+}
+
+void PROTOCOLS::SharedDtor() {
+}
+
+void PROTOCOLS::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const PROTOCOLS& PROTOCOLS::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_PROTOCOLS_jtag_5fcmd_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void PROTOCOLS::Clear() {
+// @@protoc_insertion_point(message_clear_start:usb2jtag.PROTOCOLS)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  protocols_.Clear();
+  _has_bits_.Clear();
+  _internal_metadata_.Clear();
+}
+
+#if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+const char* PROTOCOLS::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // repeated .usb2jtag.PROTOCOL protocols = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(add_protocols(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<::PROTOBUF_NAMESPACE_ID::uint8>(ptr) == 10);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+#else  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+bool PROTOCOLS::MergePartialFromCodedStream(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!PROTOBUF_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+  // @@protoc_insertion_point(parse_start:usb2jtag.PROTOCOLS)
+  for (;;) {
+    ::std::pair<::PROTOBUF_NAMESPACE_ID::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .usb2jtag.PROTOCOL protocols = 1;
+      case 1: {
+        if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (10 & 0xFF)) {
+          DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadMessage(
+                input, add_protocols()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0) {
+          goto success;
+        }
+        DO_(::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SkipField(
+              input, tag, _internal_metadata_.mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:usb2jtag.PROTOCOLS)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:usb2jtag.PROTOCOLS)
+  return false;
+#undef DO_
+}
+#endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+
+void PROTOCOLS::SerializeWithCachedSizes(
+    ::PROTOBUF_NAMESPACE_ID::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:usb2jtag.PROTOCOLS)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .usb2jtag.PROTOCOL protocols = 1;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->protocols_size()); i < n; i++) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1,
+      this->protocols(static_cast<int>(i)),
+      output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFields(
+        _internal_metadata_.unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:usb2jtag.PROTOCOLS)
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* PROTOCOLS::InternalSerializeWithCachedSizesToArray(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:usb2jtag.PROTOCOLS)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .usb2jtag.PROTOCOL protocols = 1;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->protocols_size()); i < n; i++) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessageToArray(
+        1, this->protocols(static_cast<int>(i)), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:usb2jtag.PROTOCOLS)
+  return target;
+}
+
+size_t PROTOCOLS::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:usb2jtag.PROTOCOLS)
+  size_t total_size = 0;
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::ComputeUnknownFieldsSize(
+        _internal_metadata_.unknown_fields());
+  }
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .usb2jtag.PROTOCOL protocols = 1;
+  {
+    unsigned int count = static_cast<unsigned int>(this->protocols_size());
+    total_size += 1UL * count;
+    for (unsigned int i = 0; i < count; i++) {
+      total_size +=
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+          this->protocols(static_cast<int>(i)));
+    }
+  }
+
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void PROTOCOLS::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:usb2jtag.PROTOCOLS)
+  GOOGLE_DCHECK_NE(&from, this);
+  const PROTOCOLS* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<PROTOCOLS>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:usb2jtag.PROTOCOLS)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:usb2jtag.PROTOCOLS)
+    MergeFrom(*source);
+  }
+}
+
+void PROTOCOLS::MergeFrom(const PROTOCOLS& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:usb2jtag.PROTOCOLS)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  protocols_.MergeFrom(from.protocols_);
+}
+
+void PROTOCOLS::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:usb2jtag.PROTOCOLS)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void PROTOCOLS::CopyFrom(const PROTOCOLS& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:usb2jtag.PROTOCOLS)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool PROTOCOLS::IsInitialized() const {
+  if (!::PROTOBUF_NAMESPACE_ID::internal::AllAreInitialized(this->protocols())) return false;
+  return true;
+}
+
+void PROTOCOLS::InternalSwap(PROTOCOLS* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(_has_bits_[0], other->_has_bits_[0]);
+  CastToBase(&protocols_)->InternalSwap(CastToBase(&other->protocols_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata PROTOCOLS::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace usb2jtag
 PROTOBUF_NAMESPACE_OPEN
@@ -1718,6 +2015,9 @@ template<> PROTOBUF_NOINLINE ::usb2jtag::HL_COMMAND* Arena::CreateMaybeMessage< 
 }
 template<> PROTOBUF_NOINLINE ::usb2jtag::PROTOCOL* Arena::CreateMaybeMessage< ::usb2jtag::PROTOCOL >(Arena* arena) {
   return Arena::CreateInternal< ::usb2jtag::PROTOCOL >(arena);
+}
+template<> PROTOBUF_NOINLINE ::usb2jtag::PROTOCOLS* Arena::CreateMaybeMessage< ::usb2jtag::PROTOCOLS >(Arena* arena) {
+  return Arena::CreateInternal< ::usb2jtag::PROTOCOLS >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

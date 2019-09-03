@@ -18,14 +18,17 @@ int main(int argc, char *argv[]) {
 
   unsigned char operation_type = 'W';
 
-  if (argc == 2) {
-    if (argv[1][0] == 'R' or argv[1][0] == 'W')
-      operation_type = argv[1][0];
+  if (argc != 3) {
+    std::cout << "Wrong arguments: " << argv[0] << " <R/W> <protocol_name>" << std::endl; 
+    return 0;
   }
+  
+  if (argv[1][0] == 'R' or argv[1][0] == 'W')
+    operation_type = argv[1][0];
 
   device *io = target_init();
 
-  load_protocol();
+  load_protocol(argv[2]);
 
   target_reset(io);
 
@@ -48,11 +51,10 @@ int main(int argc, char *argv[]) {
     clock_gettime(CLOCK_MONOTONIC, &start);
 
     if (operation_type == 'W')
-      target_write(io, address, wdata);
+      target_write_u32(io, address, wdata);
 
     if (operation_type == 'R') {
-      auto data = target_read(io, address, size);
-      delete data;
+      auto data = target_read_u32(io, address);
     }
     // address += 4;
 
