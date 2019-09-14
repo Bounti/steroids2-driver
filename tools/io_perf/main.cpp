@@ -32,8 +32,8 @@ int main(int argc, char *argv[]) {
   
   target_reset(io);
 
-  //uint32_t address = 0x10000000, size = 0x4;
-  uint32_t address = 0x2000C000, size = 0x4;
+  uint32_t address = 0x10000000, size = 0x4;
+  //uint32_t address = 0x2000C000, size = 0x4;
 
   uint32_t wdata = {0x00000000};
 
@@ -47,8 +47,8 @@ int main(int argc, char *argv[]) {
 
     uint64_t raw_data = target_read_u32(io, address);
 
-    //uint32_t data = (raw_data >> 2) & 0xFFFFFFFF;
-    uint32_t data = (raw_data >> 4) & 0xFFFFFFFF;
+    uint32_t data = (raw_data >> 2) & 0xFFFFFFFF;
+    //uint32_t data = (raw_data >> 4) & 0xFFFFFFFF;
 
     if (memcmp((const void*)&data, (const void*)&wdata, 4) != 0) {
 

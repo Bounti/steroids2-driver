@@ -87,16 +87,23 @@ uint64_t target_read_u32(device *io, uint32_t address) {
   uint32_t res = 0;
 
   auto crafted_packet = my_crafter->craft(c_read, address, 0);
-  io->send(crafted_packet.first, crafted_packet.second);
+  if( crafted_packet.first != NULL) {
+  
+    io->send(crafted_packet.first, crafted_packet.second);
 
-  uint8_t buffer[8] = {0};
-  io->receive(buffer, 8);
+    uint8_t buffer[8] = {0};
+    io->receive(buffer, 8);
 
-  printf("> %016lx\n", *((unsigned long int*)&buffer[0]));
+    printf("> %016lx\n", *((unsigned long int*)&buffer[0]));
 
-  res = *((unsigned long int*)&buffer[0]);
-  //res = *((unsigned long int*)&buffer[0]) >> 4;
-  return res;
+    delete crafted_packet.first;
+
+    res = *((unsigned long int*)&buffer[0]);
+    //res = *((unsigned long int*)&buffer[0]) >> 4;
+    return res;  
+  } else { 
+    return 0; 
+  }  
 }
 
 

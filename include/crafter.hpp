@@ -36,6 +36,10 @@ public:
 
   bool select_protocol(std::string protocol_name);
 
+  pair<uint8_t *, uint64_t> craft(COMMAND cmd_type, uint32_t data, 
+        uint32_t jtag_start, uint32_t jtag_end, uint32_t bitcount,
+        uint32_t period, bool write_back);
+
   pair<uint8_t *, uint64_t> craft(COMMAND cmd, uint32_t addr_size,
                                          uint32_t payload);
 };
