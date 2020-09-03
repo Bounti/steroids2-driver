@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     std::cout << "Wrong arguments: " << argv[0] << " <R/W> <protocol_name>" << std::endl; 
     return 0;
   }
-  
+
   if (argv[1][0] == 'R' or argv[1][0] == 'W')
     operation_type = argv[1][0];
 

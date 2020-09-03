@@ -1,4 +1,4 @@
-#include "api.h"
+#include "device.hpp"
 
 #include <chrono>
 #include <ctime>
@@ -7,7 +7,9 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
 
-  device *io = target_init();
+  device *io = new device(0x04B4, 0x00F1, 0);
+
+  io->init();
 
   unsigned long int data_write = 0xABABABAB10000000;
   unsigned long int data_read  = 0x1000000010000001;
@@ -18,11 +20,11 @@ int main(int argc, char *argv[]) {
 
   for(int i=0; i<100000; i++) {
 
-    data_write = (unsigned long int)(data++ << 32) | (unsigned long int)0x10000000;
+    //data_write = (unsigned long int)(data++ << 32) | (unsigned long int)0x10000000;
 
     //printf("Writing %016lx\n", data_write);
 
-    io->send(i8_packet_w, 8);  
+    io->send(i8_packet_w, 8);
     io->send(i8_packet_r, 8);
 
     printf("Reading data !");
@@ -37,6 +39,6 @@ int main(int argc, char *argv[]) {
 
   //res = *((unsigned long int*)&buffer[0]);
   //res = *((unsigned long int*)&buffer[0]) >> 4;
-  //return res;  
+  //return res;
   //}
 }

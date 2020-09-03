@@ -169,7 +169,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::usb2jtag::_PROTOCOLS_default_instance_),
 };
 
-const char descriptor_table_protodef_jtag_5fcmd_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
+const char descriptor_table_protodef_jtag_5fcmd_2eproto[] =
   "\n\016jtag_cmd.proto\022\010usb2jtag\"\212\002\n\014JTAG_COMM"
   "AND\022\022\n\njtag_start\030\001 \002(\r\022\020\n\010jtag_end\030\002 \002("
   "\r\022\023\n\010bitcount\030\003 \002(\r:\0010\022\021\n\006period\030\004 \002(\r:\001"
@@ -234,7 +234,7 @@ constexpr int HL_COMMAND::CMD_TYPE_ARRAYSIZE;
 
 void JTAG_COMMAND::InitAsDefaultInstance() {
 }
-class JTAG_COMMAND::_Internal {
+class JTAG_COMMAND::HasBitSetters {
  public:
   using HasBits = decltype(std::declval<JTAG_COMMAND>()._has_bits_);
   static void set_has_jtag_start(HasBits* has_bits) {
@@ -271,6 +271,20 @@ class JTAG_COMMAND::_Internal {
     (*has_bits)[0] |= 1024u;
   }
 };
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int JTAG_COMMAND::kJtagStartFieldNumber;
+const int JTAG_COMMAND::kJtagEndFieldNumber;
+const int JTAG_COMMAND::kBitcountFieldNumber;
+const int JTAG_COMMAND::kPeriodFieldNumber;
+const int JTAG_COMMAND::kPayloadFieldNumber;
+const int JTAG_COMMAND::kDataOffsetFieldNumber;
+const int JTAG_COMMAND::kDataLengthFieldNumber;
+const int JTAG_COMMAND::kDataFieldNumber;
+const int JTAG_COMMAND::kDataIsOtherFieldNumber;
+const int JTAG_COMMAND::kDataIsAddressFieldNumber;
+const int JTAG_COMMAND::kWriteBackFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 JTAG_COMMAND::JTAG_COMMAND()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -335,7 +349,7 @@ void JTAG_COMMAND::Clear() {
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
+  HasBitSetters::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -344,7 +358,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       // required uint32 jtag_start = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          _Internal::set_has_jtag_start(&has_bits);
+          HasBitSetters::set_has_jtag_start(&has_bits);
           jtag_start_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -352,7 +366,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       // required uint32 jtag_end = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          _Internal::set_has_jtag_end(&has_bits);
+          HasBitSetters::set_has_jtag_end(&has_bits);
           jtag_end_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -360,7 +374,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       // required uint32 bitcount = 3 [default = 0];
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          _Internal::set_has_bitcount(&has_bits);
+          HasBitSetters::set_has_bitcount(&has_bits);
           bitcount_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -368,7 +382,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       // required uint32 period = 4 [default = 0];
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
-          _Internal::set_has_period(&has_bits);
+          HasBitSetters::set_has_period(&has_bits);
           period_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -376,7 +390,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       // optional uint64 payload = 5 [default = 0];
       case 5:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
-          _Internal::set_has_payload(&has_bits);
+          HasBitSetters::set_has_payload(&has_bits);
           payload_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -384,7 +398,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       // optional uint32 data_offset = 6 [default = 0];
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
-          _Internal::set_has_data_offset(&has_bits);
+          HasBitSetters::set_has_data_offset(&has_bits);
           data_offset_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -392,7 +406,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       // optional uint32 data_length = 7 [default = 0];
       case 7:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 56)) {
-          _Internal::set_has_data_length(&has_bits);
+          HasBitSetters::set_has_data_length(&has_bits);
           data_length_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -400,7 +414,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       // optional uint64 data = 8 [default = 0];
       case 8:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 64)) {
-          _Internal::set_has_data(&has_bits);
+          HasBitSetters::set_has_data(&has_bits);
           data_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -408,7 +422,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       // optional bool data_is_other = 9 [default = false];
       case 9:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 72)) {
-          _Internal::set_has_data_is_other(&has_bits);
+          HasBitSetters::set_has_data_is_other(&has_bits);
           data_is_other_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -416,7 +430,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       // optional bool data_is_address = 10 [default = false];
       case 10:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 80)) {
-          _Internal::set_has_data_is_address(&has_bits);
+          HasBitSetters::set_has_data_is_address(&has_bits);
           data_is_address_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -424,7 +438,7 @@ const char* JTAG_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_I
       // optional bool write_back = 11 [default = false];
       case 11:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 88)) {
-          _Internal::set_has_write_back(&has_bits);
+          HasBitSetters::set_has_write_back(&has_bits);
           write_back_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -463,7 +477,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
       // required uint32 jtag_start = 1;
       case 1: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (8 & 0xFF)) {
-          _Internal::set_has_jtag_start(&_has_bits_);
+          HasBitSetters::set_has_jtag_start(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
                    ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
                  input, &jtag_start_)));
@@ -476,7 +490,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
       // required uint32 jtag_end = 2;
       case 2: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (16 & 0xFF)) {
-          _Internal::set_has_jtag_end(&_has_bits_);
+          HasBitSetters::set_has_jtag_end(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
                    ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
                  input, &jtag_end_)));
@@ -489,7 +503,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
       // required uint32 bitcount = 3 [default = 0];
       case 3: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (24 & 0xFF)) {
-          _Internal::set_has_bitcount(&_has_bits_);
+          HasBitSetters::set_has_bitcount(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
                    ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
                  input, &bitcount_)));
@@ -502,7 +516,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
       // required uint32 period = 4 [default = 0];
       case 4: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (32 & 0xFF)) {
-          _Internal::set_has_period(&_has_bits_);
+          HasBitSetters::set_has_period(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
                    ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
                  input, &period_)));
@@ -515,7 +529,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
       // optional uint64 payload = 5 [default = 0];
       case 5: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (40 & 0xFF)) {
-          _Internal::set_has_payload(&_has_bits_);
+          HasBitSetters::set_has_payload(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
                    ::PROTOBUF_NAMESPACE_ID::uint64, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT64>(
                  input, &payload_)));
@@ -528,7 +542,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
       // optional uint32 data_offset = 6 [default = 0];
       case 6: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (48 & 0xFF)) {
-          _Internal::set_has_data_offset(&_has_bits_);
+          HasBitSetters::set_has_data_offset(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
                    ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
                  input, &data_offset_)));
@@ -541,7 +555,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
       // optional uint32 data_length = 7 [default = 0];
       case 7: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (56 & 0xFF)) {
-          _Internal::set_has_data_length(&_has_bits_);
+          HasBitSetters::set_has_data_length(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
                    ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
                  input, &data_length_)));
@@ -554,7 +568,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
       // optional uint64 data = 8 [default = 0];
       case 8: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (64 & 0xFF)) {
-          _Internal::set_has_data(&_has_bits_);
+          HasBitSetters::set_has_data(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
                    ::PROTOBUF_NAMESPACE_ID::uint64, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT64>(
                  input, &data_)));
@@ -567,7 +581,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
       // optional bool data_is_other = 9 [default = false];
       case 9: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (72 & 0xFF)) {
-          _Internal::set_has_data_is_other(&_has_bits_);
+          HasBitSetters::set_has_data_is_other(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
                    bool, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BOOL>(
                  input, &data_is_other_)));
@@ -580,7 +594,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
       // optional bool data_is_address = 10 [default = false];
       case 10: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (80 & 0xFF)) {
-          _Internal::set_has_data_is_address(&_has_bits_);
+          HasBitSetters::set_has_data_is_address(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
                    bool, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BOOL>(
                  input, &data_is_address_)));
@@ -593,7 +607,7 @@ bool JTAG_COMMAND::MergePartialFromCodedStream(
       // optional bool write_back = 11 [default = false];
       case 11: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (88 & 0xFF)) {
-          _Internal::set_has_write_back(&_has_bits_);
+          HasBitSetters::set_has_write_back(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
                    bool, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_BOOL>(
                  input, &write_back_)));
@@ -970,6 +984,10 @@ bool JTAG_COMMAND::IsInitialized() const {
   return true;
 }
 
+void JTAG_COMMAND::Swap(JTAG_COMMAND* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
 void JTAG_COMMAND::InternalSwap(JTAG_COMMAND* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -996,7 +1014,7 @@ void JTAG_COMMAND::InternalSwap(JTAG_COMMAND* other) {
 
 void HL_COMMAND::InitAsDefaultInstance() {
 }
-class HL_COMMAND::_Internal {
+class HL_COMMAND::HasBitSetters {
  public:
   using HasBits = decltype(std::declval<HL_COMMAND>()._has_bits_);
   static void set_has_type(HasBits* has_bits) {
@@ -1006,6 +1024,12 @@ class HL_COMMAND::_Internal {
     (*has_bits)[0] |= 2u;
   }
 };
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int HL_COMMAND::kTypeFieldNumber;
+const int HL_COMMAND::kCommandsFieldNumber;
+const int HL_COMMAND::kSizeFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 HL_COMMAND::HL_COMMAND()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -1068,7 +1092,7 @@ void HL_COMMAND::Clear() {
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* HL_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
+  HasBitSetters::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -1101,7 +1125,7 @@ const char* HL_COMMAND::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
       // required uint32 size = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          _Internal::set_has_size(&has_bits);
+          HasBitSetters::set_has_size(&has_bits);
           size_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -1170,7 +1194,7 @@ bool HL_COMMAND::MergePartialFromCodedStream(
       // required uint32 size = 3;
       case 3: {
         if (static_cast< ::PROTOBUF_NAMESPACE_ID::uint8>(tag) == (24 & 0xFF)) {
-          _Internal::set_has_size(&_has_bits_);
+          HasBitSetters::set_has_size(&_has_bits_);
           DO_((::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::ReadPrimitive<
                    ::PROTOBUF_NAMESPACE_ID::uint32, ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::TYPE_UINT32>(
                  input, &size_)));
@@ -1385,6 +1409,10 @@ bool HL_COMMAND::IsInitialized() const {
   return true;
 }
 
+void HL_COMMAND::Swap(HL_COMMAND* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
 void HL_COMMAND::InternalSwap(HL_COMMAND* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -1403,13 +1431,18 @@ void HL_COMMAND::InternalSwap(HL_COMMAND* other) {
 
 void PROTOCOL::InitAsDefaultInstance() {
 }
-class PROTOCOL::_Internal {
+class PROTOCOL::HasBitSetters {
  public:
   using HasBits = decltype(std::declval<PROTOCOL>()._has_bits_);
   static void set_has_target(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
 };
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int PROTOCOL::kTargetFieldNumber;
+const int PROTOCOL::kCommandsFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PROTOCOL::PROTOCOL()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -1470,7 +1503,7 @@ void PROTOCOL::Clear() {
 #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
 const char* PROTOCOL::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
 #define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  _Internal::HasBits has_bits{};
+  HasBitSetters::HasBits has_bits{};
   while (!ctx->Done(&ptr)) {
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
@@ -1724,6 +1757,10 @@ bool PROTOCOL::IsInitialized() const {
   return true;
 }
 
+void PROTOCOL::Swap(PROTOCOL* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
 void PROTOCOL::InternalSwap(PROTOCOL* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
@@ -1742,10 +1779,14 @@ void PROTOCOL::InternalSwap(PROTOCOL* other) {
 
 void PROTOCOLS::InitAsDefaultInstance() {
 }
-class PROTOCOLS::_Internal {
+class PROTOCOLS::HasBitSetters {
  public:
   using HasBits = decltype(std::declval<PROTOCOLS>()._has_bits_);
 };
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int PROTOCOLS::kProtocolsFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PROTOCOLS::PROTOCOLS()
   : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
@@ -1992,6 +2033,10 @@ bool PROTOCOLS::IsInitialized() const {
   return true;
 }
 
+void PROTOCOLS::Swap(PROTOCOLS* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
 void PROTOCOLS::InternalSwap(PROTOCOLS* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);

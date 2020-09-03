@@ -35,7 +35,7 @@ ADD_LIBRARY(usb2jtag.so SHARED
 
 target_link_libraries(usb2jtag pthread usb-1.0 ${PROTOBUF_LIBRARY})
 
-target_link_libraries(usb2jtag.so pthread usb-1.0 ${PROTOBUF_LIBRARY})
+#target_link_libraries(usb2jtag.so pthread usb-1 ${PROTOBUF_LIBRARY})
 
 install(TARGETS usb2jtag DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
 
